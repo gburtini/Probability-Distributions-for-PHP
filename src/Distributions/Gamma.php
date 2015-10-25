@@ -10,22 +10,25 @@
 	 * -------------
 	 * Interface and structure all (C) Giuseppe Burtini.
 	 * Some work derived (with permission/license) from jStat - Javascript Statistical Library (MIT licensed).
-	 * Some work derived (with permission/license) from Python Core (PSL licensed).
+	 * Some work derived (with permission/license) from Python Core (PSFL licensed).
 	 * Some work, especially advice, provided by Graeme Douglas.
 	 */
 
 
-	class Gamma extends Distribution {
-		public static function validateParameters($a, $b) {
-			$a = floatval($a);
-            $b = floatval($b);
+	namespace gburtini\Distributions;
+	use gburtini\Distributions\Gamma;
+	use gburtini\Distributions\Distribution;
 
-            if($a <= 0 || $b <= 0) {
-                    throw new InvalidArgumentException("Alpha and beta must be greater than 0.");
-            }
+	class Gamma extends Distribution {
+		protected $shape; 
+		protected $rate;
+		public function __construct($shape, $rate) {
+			$this->shape = floatval($shape);
+			$this->rate = floatval($rate);
 		}
-		public static function rand($shape, $rate) {	
-			// This is a translation of Python licensed code from the Python project.
+		public function rand() { return static::cRand($this->shape, $this->rate); }
+		public static function cRand($shape, $rate) {	
+			// This is a translation of Python Software Foundation licensed code from the Python project.
 
 			$alpha = $shape; 
 			$beta = $rate;
@@ -86,6 +89,15 @@
 			}
 		}
 
+	}
+
+	public static function validateParameters($a, $b) {
+		$a = floatval($a);
+        $b = floatval($b);
+
+        if($a <= 0 || $b <= 0) {
+        	throw new \InvalidArgumentException("Alpha and beta must be greater than 0.");
+        }
 	}
 }
 

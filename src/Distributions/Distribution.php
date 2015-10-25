@@ -1,10 +1,28 @@
 <?php
+
+	namespace gburtini\Distributions;
+	use gburtini\Distributions\IDistribution;
+
 	abstract class Distribution implements IDistribution {
 		abstract public function pdf($x);
+
+		public function pdf($x) {
+			throw new \BadMethodCallException("PDF not implemented. Please create a pull request if you implement it yourself.");
+		}
+
 		public function pmf($x) { return $this->pdf($x); }
-		abstract public function cdf($x);
-		abstract public function icdf($y);
-		abstract public function rand();
+
+		public function cdf($x) {
+			throw new \BadMethodCallException("CDF not implemented. Please create a pull request if you implement it yourself.");
+		}
+
+		public function icdf($y) {
+			throw new \BadMethodCallException("Inverse CDF not implemented. Please create a pull request if you implement it yourself.");
+		}
+		public function rand() {
+			throw new \BadMethodCallException("Random draw not implemented. Please create a pull request if you implement it yourself.");
+		}
+
 		public function rands($n) {
 			// generate $n random numbers.
 			$return = new SplFixedArray($n);
@@ -15,6 +33,15 @@
 		}
 		public function quantile($y) {
 			return $this->icdf($y);
+		}
+
+		// $list should be a hash of name=>value. this is used only in error messages.
+		protected static function renderParameters($list) {
+			$ret = [];
+			foreach($list as $k=>$v) {
+				$ret[] = "$k = " . var_export($v, true);
+			}
+			return trim(implode(", ", $ret), ", ");
 		}
 	}
 ?>

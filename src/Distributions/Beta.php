@@ -29,7 +29,6 @@
 	namespace gburtini\Distributions;
 	use gburtini\Distributions\Gamma;
 	use gburtini\Distributions\Distribution;
-	use gburtini\Distributions\IDistribution;
 
 	class Beta extends Distribution {
 		public $alpha;
@@ -42,29 +41,16 @@
 			$this->alpha = $a;
 			$this->beta = $b;
 		}
-
-		public function pdf() {
-			// TODO
-		}
-
-		public function cdf() {
-			// TODO
-		}
-
-		// inverse CDF or quantile function.
-		public function icdf() { 
-			// TODO
-		}
 		
 		public function rand() { 
-			return static::rand($this->alpha, $this->beta); 
+			return static::cRand($this->alpha, $this->beta); 
 		}
 
-		public static function rand($a, $b) {
+		public static function cRand($a, $b) {
 			$ag = Gamma::rand($a, 1);
 			$bg = Gamma::rand($b, 1);
-			// TODO: figure out where $bc went.
-			return ($ag / ($ag+$bc));
+			
+			return ($ag / ($ag+$bg));
 		}
 
         public static function validateParameters($a, $b) {
@@ -72,7 +58,7 @@
             $b = floatval($b);
 
             if($a <= 0 || $b <= 0) {
-                    throw new InvalidArgumentException("α (\$a = " . var_export($a, true) . ", β (\$b = " . var_export($b, true) . ") must each be greater than 0. ");
+            	throw new \InvalidArgumentException("α (\$a = " . var_export($a, true) . ", β (\$b = " . var_export($b, true) . ") must each be greater than 0. ");
             }
         }
 	}

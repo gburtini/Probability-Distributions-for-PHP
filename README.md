@@ -3,21 +3,18 @@ Probability Distributions for PHP
 
 A fully PHP implementation of a number of tools for working with statistical distributions in PHP. 
 
-Version 0.0.1, not ready for use. Untested, incomplete. I will remove this message when 1.0 is finished.
-
 Installation
 ------------
-We'll be on composer shortly. Watch this space.
+This package is available in Packagist/Composer as ``gburtini/distributions``.
+
 
 Supported Distributions
 -----------------------
-	* [Normal](https://en.wikipedia.org/wiki/Normal_distribution)(μ ∈ R, σ2 > 0) including optional skewness and kurtosis parameters.
-	* [Binomial](https://en.wikipedia.org/wiki/Binomial_distribution)
+	* [Normal](https://en.wikipedia.org/wiki/Normal_distribution)(μ ∈ R, σ2 > 0)
 	* [Beta](https://en.wikipedia.org/wiki/Beta_distribution)
 	* [Gamma](https://en.wikipedia.org/wiki/Gamma_distribution)
-	* [Bernoulli](https://en.wikipedia.org/wiki/Bernoulli_distribution)
 
-All supported distributions are in the namespace gburtini\Distributions and implement the following interface. Implementing new distributions is as easy as extending gburtini\Distributions\Distribution or one of the existing implementations.
+All supported distributions are in the namespace ``gburtini\Distributions`` and implement the following interface. Implementing new distributions is as easy as extending ``gburtini\Distributions\Distribution`` or one of the existing implementations.
 
 Interface
 ---------
@@ -36,7 +33,8 @@ There is a [http://php.net/manual/en/ref.stats.php](Statistics Functions package
 
 Future Work
 -----------
-	* Implement more univariate distributions. For example, any of: Cauchy, chi-squared, exponential, F, geometric, hypergeometric, Laplace, log-normal, Maxwell–Boltzmann, Pareto, Poisson, Rademacher, Rayleigh, Student's t, uniform, Wakeby, Weibull, Zipf, Zipf-Mandelbrot
+	* First, implement the interface for all distributions!
+	* Implement more univariate distributions. For example, any of: Binomial, Cauchy, chi-squared, exponential, F, geometric, hypergeometric, Laplace, log-normal, Maxwell–Boltzmann, Pareto, Poisson, Rademacher, Rayleigh, Student's t, uniform, Wakeby, Weibull, Zipf, Zipf-Mandelbrot
 	* Implement support for multivariate distributions, especially the [https://en.wikipedia.org/wiki/Multivariate_normal_distribution](multivariate normal), but also: Dirchlet (beta), multinomial, etc.
 	* Generalization of distributions' implementation where appropriate, such as an [https://en.wikipedia.org/wiki/Elliptical_distribution](elliptical distributions) approach to implementing the normal or a categorical distribution implementation of the Bernoulli.
 	* Design a good interface for alternative parameterizations (for example, [https://en.wikipedia.org/wiki/Normal_distribution#Alternative_parameterizations](precision-denoted normal) and mode and concentration denoted beta).

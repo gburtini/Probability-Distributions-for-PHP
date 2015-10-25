@@ -1,4 +1,6 @@
 <?php 
+	namespace gburtini\Distributions;
+
 	interface IDistribution {
 		public function pdf($x);
 		public function pmf($x);
