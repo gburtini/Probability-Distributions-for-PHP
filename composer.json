@@ -1,0 +1,11 @@
+{
+    "name": "gburtini/distributions",
+    "description": "PHP implementation of a number of statistical probability distributions: normal, beta, gamma, etc.",
+    "authors": [
+        {
+            "name": "Giuseppe Burtini",
+            "email": "joe@truephp.com"
+        }
+    ],
+    "require": {}
+}
