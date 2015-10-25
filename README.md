@@ -31,14 +31,14 @@ Interface
 
 Alternatives
 ------------
-There is a [http://php.net/manual/en/ref.stats.php](Statistics Functions package) in PECL called ``stats`` which I have never been able to get to work and has been very quiet since 2006. There is plenty of code for individual distributions around the web, StackOverflow, etc., but in my experience it is hit and miss.
+There is a [Statistics Functions package](http://php.net/manual/en/ref.stats.php) in PECL called ``stats`` which I have never been able to get to work and has been very quiet since 2006. There is plenty of code for individual distributions around the web, StackOverflow, etc., but in my experience it is hit and miss.
 
 Future Work
 -----------
 * Implement more univariate distributions. For example, any of: Cauchy, chi-squared, exponential, F, geometric, hypergeometric, Laplace, log-normal, Maxwell–Boltzmann, Pareto, Poisson, Rademacher, Rayleigh, Student's t, uniform, Wakeby, Weibull, Zipf, Zipf-Mandelbrot
-* Implement support for multivariate distributions, especially the [https://en.wikipedia.org/wiki/Multivariate_normal_distribution](multivariate normal), but also: Dirchlet (beta), multinomial, etc.
-* Generalization of distributions' implementation where appropriate, such as an [https://en.wikipedia.org/wiki/Elliptical_distribution](elliptical distributions) approach to implementing the normal or a categorical distribution implementation of the Bernoulli.
-* Design a good interface for alternative parameterizations (for example, [https://en.wikipedia.org/wiki/Normal_distribution#Alternative_parameterizations](precision-denoted normal), mode and concentration denoted beta, and shape and rate denoted gamma).
+* Implement support for multivariate distributions, especially the [multivariate normal](https://en.wikipedia.org/wiki/Multivariate_normal_distribution), but also: Dirchlet (beta), multinomial, etc.
+* Generalization of distributions' implementation where appropriate, such as an [elliptical distributions](https://en.wikipedia.org/wiki/Elliptical_distribution) approach to implementing the normal or a categorical distribution implementation of the Bernoulli.
+* Design a good interface for alternative parameterizations (for example, [precision-denoted normal](https://en.wikipedia.org/wiki/Normal_distribution#Alternative_parameterizations), mode and concentration denoted beta, and shape and rate denoted gamma).
 * Toolkit for performing auxiliary probability-related tasks such as method of moments fitting.
 * Add moment-generating and characteristic functions to distributions where they are meaningful and tractable. Generalize concepts like expectation and variance out of them with a clean interface.
 
