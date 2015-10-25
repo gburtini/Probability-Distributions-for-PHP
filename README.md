@@ -21,7 +21,7 @@ Interface
 * *Constructor* - takes in the parameters of the distribution and returns an instance.
 * public function *pdf*($x) - returns the [density](https://en.wikipedia.org/wiki/Probability_density_function) or [mass](https://en.wikipedia.org/wiki/Probability_mass_function) at a given *discretized* point.
 * public function *pmf*($x) - alias for pdf.
-* public function *cdf*($x) - returns the cumulative [density](https://en.wikipedia.org/wiki/Probability_density_function) from ![negative infinity](http://www.sciweavers.org/tex2img.php?eq=-%5Cinfty&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=) to $x.
+* public function *cdf*($x) - returns the cumulative [density](https://en.wikipedia.org/wiki/Probability_density_function) from -∞ to $x.
 * public function *icdf*($y) - inverse CDF function, for a given density, returns a point.
 * public function *quantile*($y) - alias for icdf.
 * public function *rand*() - draws a sample from this distribution.
