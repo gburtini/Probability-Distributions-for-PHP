@@ -28,10 +28,10 @@
 		}
 
 		public function rand() {
-			return static::cRand($this->mean, $tihs->variance);
+			return static::draw($this->mean, $tihs->variance);
 
 		}
-		public static function cRand($mean, $variance) {
+		public static function draw($mean, $variance) {
 			return static::boxMuller()*sqrt($variance) + $mean;
 		}
 		public function cdf($x) {

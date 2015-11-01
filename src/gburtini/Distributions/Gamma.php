@@ -26,8 +26,8 @@
 			$this->shape = floatval($shape);
 			$this->rate = floatval($rate);
 		}
-		public function rand() { return static::cRand($this->shape, $this->rate); }
-		public static function cRand($shape, $rate) {	
+		public function rand() { return static::draw($this->shape, $this->rate); }
+		public static function draw($shape, $rate) {	
 			// This is a translation of Python Software Foundation licensed code from the Python project.
 
 			$alpha = $shape; 

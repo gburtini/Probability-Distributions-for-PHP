@@ -43,10 +43,10 @@
 		}
 		
 		public function rand() { 
-			return static::cRand($this->alpha, $this->beta); 
+			return static::draw($this->alpha, $this->beta); 
 		}
 
-		public static function cRand($a, $b) {
+		public static function draw($a, $b) {
 			$ag = Gamma::rand($a, 1);
 			$bg = Gamma::rand($b, 1);
 			
