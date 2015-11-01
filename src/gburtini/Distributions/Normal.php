@@ -36,7 +36,7 @@
 		}
 		public function cdf($x) {
 		        $d = $x - $this->mean;
-		        return 0.5 * (1 + $this->erf($d / (sqrt($this->variance) * sqrt(2))));2
+		        return 0.5 * (1 + $this->erf($d / (sqrt($this->variance) * sqrt(2))));
 		}
 		public function icdf($y) {
 			// Inverse ncdf approximation by Peter John Acklam, implementation adapted to
