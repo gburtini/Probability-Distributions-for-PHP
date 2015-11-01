@@ -37,7 +37,7 @@
 		// create a Beta(α, β) distribution
 		public function __construct($a, $b) {
 			static::validateParameters($a, $b);
-
+			
 			$this->alpha = $a;
 			$this->beta = $b;
 		}
@@ -53,14 +53,14 @@
 			return ($ag / ($ag+$bg));
 		}
 
-        public static function validateParameters($a, $b) {
-            $a = floatval($a);
-            $b = floatval($b);
-
-            if($a <= 0 || $b <= 0) {
-            	throw new \InvalidArgumentException("α (\$a = " . var_export($a, true) . ", β (\$b = " . var_export($b, true) . ") must each be greater than 0. ");
-            }
-        }
+		public static function validateParameters($a, $b) {
+			$a = floatval($a);
+			$b = floatval($b);
+			
+			if($a <= 0 || $b <= 0) {
+				throw new \InvalidArgumentException("α (\$a = " . var_export($a, true) . ", β (\$b = " . var_export($b, true) . ") must each be greater than 0. ");
+			}
+		}
 	}
 
 ?>

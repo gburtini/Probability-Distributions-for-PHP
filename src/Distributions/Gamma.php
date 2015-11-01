@@ -93,11 +93,11 @@
 
 	public static function validateParameters($a, $b) {
 		$a = floatval($a);
-        $b = floatval($b);
+		$b = floatval($b);
 
-        if($a <= 0 || $b <= 0) {
-        	throw new \InvalidArgumentException("Alpha and beta must be greater than 0.");
-        }
+	        if($a <= 0 || $b <= 0) {
+	        	throw new \InvalidArgumentException("Alpha and beta must be greater than 0.");
+	        }
 	}
 }
 
