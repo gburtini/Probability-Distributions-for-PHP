@@ -17,9 +17,11 @@
 		public function icdf($y) {
 			throw new \BadMethodCallException("Inverse CDF not implemented. Please create a pull request if you implement it yourself.");
 		}
+
 		public function rand() {
 			throw new \BadMethodCallException("Random draw not implemented. Please create a pull request if you implement it yourself.");
 		}
+
 		public static function draw() {
 			throw new \BadMethodCallException("Static version of random draw not implemented. Please create a pull request if you implement it yourself.");
 		}

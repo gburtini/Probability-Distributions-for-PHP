@@ -26,7 +26,7 @@ Interface
 * public function *quantile*($y) - alias for icdf.
 * public function *rand*() - draws a sample from this distribution.
 * public function *rands*($n) - draws a sample of length $n from this distribution.
-
+* public *static* function *draw*(...) - draws a sample from the distribution given by the parameters passed in, a static alternative to rand.
 Alternatives
 ------------
 There is a [Statistics Functions package](http://php.net/manual/en/ref.stats.php) in PECL called ``stats`` which I have never been able to get to work and has been very quiet since 2006. There is plenty of code for individual distributions around the web, StackOverflow, etc., but in my experience it is hit and miss.
