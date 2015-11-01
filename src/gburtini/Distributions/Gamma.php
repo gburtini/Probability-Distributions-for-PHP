@@ -26,7 +26,9 @@
 			$this->shape = floatval($shape);
 			$this->rate = floatval($rate);
 		}
-		public function rand() { return static::draw($this->shape, $this->rate); }
+		public function rand() { 
+			return static::draw($this->shape, $this->rate); 
+		}
 		public static function draw($shape, $rate) {	
 			// This is a translation of Python Software Foundation licensed code from the Python project.
 
@@ -52,7 +54,7 @@
 					$x = $alpha * exp($v);
 					$z = $u1 * $u1 * $u2;
 					$r = $bbb+$ccc*$v-$x;
-					$SG_MAGICCONST = 1 + Math.log(4.5);
+					$SG_MAGICCONST = 1 + log(4.5);
 					if ($r + $SG_MAGICCONST - 4.5*$z >= 0.0 || $r >= log($z)) {
 						return $x * $beta;
 					}
@@ -89,16 +91,14 @@
 			}
 		}
 
-	}
+		public static function validateParameters($a, $b) {
+			$a = floatval($a);
+			$b = floatval($b);
 
-	public static function validateParameters($a, $b) {
-		$a = floatval($a);
-		$b = floatval($b);
-
-	        if($a <= 0 || $b <= 0) {
-	        	throw new \InvalidArgumentException("Alpha and beta must be greater than 0.");
-	        }
+			if($a <= 0 || $b <= 0) {
+				throw new \InvalidArgumentException("Alpha and beta must be greater than 0.");
+			}
+		}
 	}
-}
 
 ?>

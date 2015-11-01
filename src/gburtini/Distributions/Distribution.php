@@ -22,9 +22,10 @@
 			throw new \BadMethodCallException("Random draw not implemented. Please create a pull request if you implement it yourself.");
 		}
 
-		public static function draw() {
-			throw new \BadMethodCallException("Static version of random draw not implemented. Please create a pull request if you implement it yourself.");
-		}
+		// this cannot be defined in the abstract class as it violates strict standards (we always have parameters here, but they're unknown)
+		//public static function draw() {
+		//	throw new \BadMethodCallException("Static version of random draw not implemented. Please create a pull request if you implement it yourself.");
+		//}
 
 		public function rands($n) {
 			// generate $n random numbers.

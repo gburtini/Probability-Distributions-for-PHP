@@ -47,8 +47,8 @@
 		}
 
 		public static function draw($a, $b) {
-			$ag = Gamma::rand($a, 1);
-			$bg = Gamma::rand($b, 1);
+			$ag = Gamma::draw($a, 1);
+			$bg = Gamma::draw($b, 1);
 			
 			return ($ag / ($ag+$bg));
 		}
