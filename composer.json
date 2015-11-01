@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "gburtini\\Distributions":        "src/"
+            "gburtini\\Distributions":        "src/Distributions/"
         }
     },
     "require": {}
