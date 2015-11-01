@@ -4,8 +4,6 @@
 	use gburtini\Distributions\IDistribution;
 
 	abstract class Distribution implements IDistribution {
-		abstract public function pdf($x);
-
 		public function pdf($x) {
 			throw new \BadMethodCallException("PDF not implemented. Please create a pull request if you implement it yourself.");
 		}
