@@ -10,7 +10,7 @@
 	 */
 	namespace gburtini\Distributions;
 	use gburtini\Distributions\Distribution;
-
+	use gburtini\Distributions\T;
 	class Normal extends Distribution {
 		// TODO: implement a skewness, kurtosis normal.
 		protected $mean;
@@ -25,6 +25,21 @@
 			$this->variance = floatval($variance);
 			//$this->skewness = floatval($skewness);
 			//$this->kurtosis = floatval($kurtosis);
+		}
+
+		public function sampleConfidenceInterval($sampleSize, $gamma=0.95, $t=true) {
+			if(!$t) {
+				return $this->zConfidenceInterval($gamma);
+			} else {
+				return $this->studentConfidenceInterval($sampleSize, $gamma);
+			}
+		}
+		protected function zConfidenceInterval($gamma) { throw new \BadMethodCallException("Z-approximated normal sample confidence interval isn't implemented.");  }
+		protected function studentConfidenceInterval($sampleSize, $gamma) {
+			$t = new T($sampleSize - 1);
+			$tstat = $t->icdf($gamma);
+			$adjusteds = sqrt($this->variance)/sqrt($sampleSize);
+			return [$this->mean - ($tstat * $adjusteds), $this->mean + ($tstat * $adjusteds)];
 		}
 
 		public function rand() {
