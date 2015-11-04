@@ -10,9 +10,12 @@ This package is available in Packagist/Composer as ``gburtini/distributions``.
 
 Supported Distributions
 -----------------------
-* [Normal](https://en.wikipedia.org/wiki/Normal_distribution)(location μ ∈ R, squared scale σ<sup>2</sup> > 0) plus optional skewness and kurtosis parameters.
+The name given here is the name of the class. 
+
+* [Normal](https://en.wikipedia.org/wiki/Normal_distribution)(location μ ∈ R, squared scale σ<sup>2</sup> > 0) 
 * [Beta](https://en.wikipedia.org/wiki/Beta_distribution)(shape α > 0, shape β > 0)
 * [Gamma](https://en.wikipedia.org/wiki/Gamma_distribution)(shape α > 0, rate β > 0)
+* [T](https://en.wikipedia.org/wiki/Gamma_distribution)(degrees of freedom v > 0)
 
 All supported distributions are in the namespace ``gburtini\Distributions`` and implement the following interface. Implementing new distributions is as easy as extending ``gburtini\Distributions\Distribution`` or one of the existing implementations.
 
@@ -28,6 +31,11 @@ Interface
 * public function *rands*($n) - draws a sample of length $n from this distribution.
 * public *static* function *draw*(...) - draws a sample from the distribution given by the parameters passed in, a static alternative to rand.
 
+Namespaces
+----------
+``gburtini\Distributions`` contains the distribution classes as indicated above. 
+``gburtini\Distributions\Accessories`` contains BetaFunction and GammaFunction, two classes containing accessory functions for computing complete, incomplete and inverse beta and gamma functions numerically. 
+
 Alternatives
 ------------
 There is a [Statistics Functions package](http://php.net/manual/en/ref.stats.php) in PECL called ``stats`` which I have never been able to get to work and has been very quiet since 2006. There is plenty of code for individual distributions around the web, StackOverflow, etc., but in my experience it is hit and miss.
@@ -35,7 +43,8 @@ There is a [Statistics Functions package](http://php.net/manual/en/ref.stats.php
 Future Work
 -----------
 * First, implement the interface for all distributions!
-* Implement more univariate distributions. For example, any of: Cauchy, chi-squared, exponential, F, geometric, hypergeometric, Laplace, log-normal, Maxwell–Boltzmann, Pareto, Poisson, Rademacher, Rayleigh, Student's t, uniform, Wakeby, Weibull, Zipf, Zipf-Mandelbrot
+* Add mean, median, mode, variance calculators.
+* Implement more univariate distributions. For example, any of: Cauchy, chi-squared, exponential, F, geometric, hypergeometric, Laplace, log-normal, Maxwell–Boltzmann, Pareto, Poisson, Rademacher, Rayleigh, Student's t, uniform, Wakeby, Weibull, Zipf, Zipf-Mandelbrot. Producing more distributions may be aided by the [cool relational diagram](http://www.johndcook.com/blog/distribution_chart/) on John D. Cook's website.
 * Implement support for multivariate distributions, especially the [multivariate normal](https://en.wikipedia.org/wiki/Multivariate_normal_distribution), but also: Dirchlet (beta), multinomial, etc.
 * Generalization of distributions' implementation where appropriate, such as an [elliptical distributions](https://en.wikipedia.org/wiki/Elliptical_distribution) approach to implementing the normal or a categorical distribution implementation of the Bernoulli.
 * Design a good interface for alternative parameterizations (for example, [precision-denoted normal](https://en.wikipedia.org/wiki/Normal_distribution#Alternative_parameterizations), mode and concentration denoted beta, and shape and rate denoted gamma).

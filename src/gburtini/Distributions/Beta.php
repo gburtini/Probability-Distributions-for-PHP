@@ -29,7 +29,8 @@
 	namespace gburtini\Distributions;
 	use gburtini\Distributions\Gamma;
 	use gburtini\Distributions\Distribution;
-
+	use gburtini\Distributions\Accessories\GammaFunction;
+	use gburtini\Distributions\Accessories\BetaFunction;
 	class Beta extends Distribution {
 		public $alpha;
 		public $beta;
@@ -62,5 +63,4 @@
 			}
 		}
 	}
-
-?>
+	
