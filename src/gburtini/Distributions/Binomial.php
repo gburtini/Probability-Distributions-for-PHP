@@ -16,6 +16,9 @@
 			$this->fraction = $fraction;
 		}
 		
+		public function mean() { return $this->fraction; }
+		public function variance() { return ($this->fraction) * (1-$this->fraction);}
+		public function sd() { return sqrt($this->variance()); }
 		public function rand() { 
 			return static::draw($this->fraction); 
 		}
