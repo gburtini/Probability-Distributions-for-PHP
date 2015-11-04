@@ -26,6 +26,12 @@
 			return 0;
 		}
 
+		public function sampleConfidenceInterval($sampleSize, $gamma=0.95, $t=true) {
+			// proportion CI w/ Jeffrey's prior on a beta aka "Jeffrey's interval"
+			
+
+                }
+
 		public static function validateParameters($fraction) {
 			$fraction = floatval($fraction);
 			
