@@ -43,6 +43,29 @@
 			$this->beta = $b;
 		}
 		
+		// TODO: check this.
+		public function icdf($p) {
+			$x = 0;
+			$a = 0;
+			$b = 1;
+			$precision = 1e-15;
+
+			$iter_num = 0;
+
+			while ((($b - $a) > $precision) & ($iter_num < 100))
+			{
+				$x = ($a + $b) / 2;
+
+				if (BetaFunction::inverseBetaFunction($x,$this->alpha,$this->beta) > $p)
+					$b = $x;
+				else
+					$a = $x;
+				$iter_num = $iter_num + 1;
+			}
+
+			return $x;
+		}
+		
 		public function rand() { 
 			return static::draw($this->alpha, $this->beta); 
 		}
