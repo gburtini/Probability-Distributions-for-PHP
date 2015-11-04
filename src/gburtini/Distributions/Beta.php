@@ -56,7 +56,7 @@
 			{
 				$x = ($a + $b) / 2;
 
-				if (BetaFunction::inverseBetaFunction($x,$this->alpha,$this->beta) > $p)
+				if (BetaFunction::incompleteBetaFunction($x,$this->alpha,$this->beta) > $p)
 					$b = $x;
 				else
 					$a = $x;
