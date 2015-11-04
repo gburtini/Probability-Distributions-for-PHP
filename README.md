@@ -15,7 +15,8 @@ The name given here is the name of the class.
 * [Normal](https://en.wikipedia.org/wiki/Normal_distribution)(location μ ∈ R, squared scale σ<sup>2</sup> > 0) 
 * [Beta](https://en.wikipedia.org/wiki/Beta_distribution)(shape α > 0, shape β > 0)
 * [Gamma](https://en.wikipedia.org/wiki/Gamma_distribution)(shape α > 0, rate β > 0)
-* [T](https://en.wikipedia.org/wiki/Gamma_distribution)(degrees of freedom v > 0)
+* [T](https://en.wikipedia.org/wiki/Student's_t_distribution)(degrees of freedom v > 0)
+* [Dirichlet](https://en.wikipedia.org/wiki/Dirichlet_distribution)(array α > 0 concentration parameters)
 
 All supported distributions are in the namespace ``gburtini\Distributions`` and implement the following interface. Implementing new distributions is as easy as extending ``gburtini\Distributions\Distribution`` or one of the existing implementations.
 
@@ -44,8 +45,8 @@ Future Work
 -----------
 * First, implement the interface for all distributions!
 * Add mean, median, mode, variance calculators.
-* Implement more univariate distributions. For example, any of: Cauchy, chi-squared, exponential, F, geometric, hypergeometric, Laplace, log-normal, Maxwell–Boltzmann, Pareto, Poisson, Rademacher, Rayleigh, Student's t, uniform, Wakeby, Weibull, Zipf, Zipf-Mandelbrot. Producing more distributions may be aided by the [cool relational diagram](http://www.johndcook.com/blog/distribution_chart/) on John D. Cook's website.
-* Implement support for multivariate distributions, especially the [multivariate normal](https://en.wikipedia.org/wiki/Multivariate_normal_distribution), but also: Dirchlet (beta), multinomial, etc.
+* Implement more univariate distributions. For example, any of: Cauchy, chi-squared, exponential, F, geometric, hypergeometric, Laplace, log-normal, Maxwell–Boltzmann, Pareto, Poisson, Rademacher, Rayleigh, uniform, Wakeby, Weibull, Zipf, Zipf-Mandelbrot. Producing more distributions may be aided by the [cool relational diagram](http://www.johndcook.com/blog/distribution_chart/) on John D. Cook's website.
+* Implement support for multivariate distributions, especially the [multivariate normal](https://en.wikipedia.org/wiki/Multivariate_normal_distribution), but also: multinomial, etc.
 * Generalization of distributions' implementation where appropriate, such as an [elliptical distributions](https://en.wikipedia.org/wiki/Elliptical_distribution) approach to implementing the normal or a categorical distribution implementation of the Bernoulli.
 * Design a good interface for alternative parameterizations (for example, [precision-denoted normal](https://en.wikipedia.org/wiki/Normal_distribution#Alternative_parameterizations), mode and concentration denoted beta, and shape and rate denoted gamma).
 * Toolkit for performing auxiliary probability-related tasks such as method of moments fitting.
