@@ -29,7 +29,11 @@
 		public function sampleConfidenceInterval($sampleSize, $gamma=0.95, $t=true) {
 			// proportion CI w/ Jeffrey's prior on a beta aka "Jeffrey's interval"
 			
-
+			$a = ($sampleSize*$this->fraction) + 0.5;
+			$b = ($sampleSize - $a) + 0.5;
+			
+			$beta = (new Beta($a, $b));
+			return [max(0, $beta->icdf(1-$gamma)), min(1, $beta->icdf($gamma))];
                 }
 
 		public static function validateParameters($fraction) {
