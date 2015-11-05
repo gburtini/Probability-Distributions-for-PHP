@@ -32,7 +32,7 @@
 		}
 
 		public function rand() {
-			return static::draw($this->mean, $tihs->variance);
+			return static::draw($this->mean, $this->variance);
 
 		}
 		public static function draw($mean, $variance) {
