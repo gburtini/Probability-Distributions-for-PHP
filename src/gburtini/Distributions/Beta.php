@@ -82,7 +82,7 @@
 			$b = floatval($b);
 			
 			if($a <= 0 || $b <= 0) {
-				throw new \InvalidArgumentException("α (\$a = " . var_export($a, true) . ", β (\$b = " . var_export($b, true) . ") must each be greater than 0. ");
+				throw new \InvalidArgumentException("α (\$a = " . var_export($a, true) . "), β (\$b = " . var_export($b, true) . ") must each be greater than 0. ");
 			}
 		}
 	}
