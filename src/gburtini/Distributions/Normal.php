@@ -20,7 +20,7 @@
 
 		public function mean() { return $this->mean; }
 		public function variance() { return $this->variance; }
-		public function sd() { return sqrt($this->variance; }
+		public function sd() { return sqrt($this->variance); }
 
 		public function __construct($mean = 0, $variance = 1, $skewness=0, $kurtosis=0) {
 			static::validateParameters($mean, $variance, $skewness, $kurtosis);
