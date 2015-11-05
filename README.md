@@ -17,7 +17,7 @@ The name given here is the name of the class.
 * [Beta](https://en.wikipedia.org/wiki/Beta_distribution)(shape α > 0, shape β > 0)
 * [Gamma](https://en.wikipedia.org/wiki/Gamma_distribution)(shape α > 0, rate β > 0)
 * [T](https://en.wikipedia.org/wiki/Student's_t_distribution)(degrees of freedom v > 0)
-* [Dirichlet](https://en.wikipedia.org/wiki/Dirichlet_distribution)(array α > 0 concentration parameters)
+* [Dirichlet](https://en.wikipedia.org/wiki/Dirichlet_distribution)(array of concentration parameters α > 0)
 
 All supported distributions are in the namespace ``gburtini\Distributions`` and implement the following interface. Implementing new distributions is as easy as extending ``gburtini\Distributions\Distribution`` or one of the existing implementations.
 
