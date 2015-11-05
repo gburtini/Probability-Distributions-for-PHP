@@ -8,7 +8,7 @@
 			$newData = new \SplFixedArray($n);
 			$originalLength = count($data);
 			for($i = 0; $i < $n; $i++) { 
-				$k = rand(0, $originalLength);
+				$k = rand(0, $originalLength-1);
 				$newData[$i] = $data[$k];
 			}
 			return $newData;
