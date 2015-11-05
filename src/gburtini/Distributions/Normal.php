@@ -124,8 +124,7 @@
 
 		public static function validateParameters($m, $v, $s, $k) {
 			if(!is_numeric($m) || !is_numeric($v) || !is_numeric($s) || !is_numeric($k))
-				throw new \InvalidArgumentException("Non-numeric parameter in normal distribution (" . static::renderParameters(compact($m,$v,$s,$k)) . ").");
-			
+				throw new \InvalidArgumentException("Non-numeric parameter in normal distribution (" . static::renderParameters(compact('m','v','s','k')) . ").");
 			if($v < 0)
 				throw new \InvalidArgumentException("Variance must be strictly positive (it is σ-squared after all!). Currently, \$v = " . var_export($v) . ".");
 			
