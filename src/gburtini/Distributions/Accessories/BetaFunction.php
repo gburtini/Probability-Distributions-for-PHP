@@ -1,11 +1,12 @@
 <?php
 	namespace gburtini\Distributions\Accessories;
+	require_once dirname(__FILE__) . "/GammaFunction.php";
 	use gburtini\Distributions\Accessories\GammaFunction;
 	
 	// these accesory functions are "necessary" to compute many beta distribution statistics, but we don't actually use them (here, they are used in the T distribution calculations currently) because the Gamma shortcut calculator is faster.
 	class BetaFunction {
 		public static function betaFunction($x, $y) {
-			return exp(GammaFunction::logGammaFunction($x) + GammaFunction::logGammaFunction($y) - GammaFunction::logGammaFunction($x-$y));
+			return exp(GammaFunction::logGammaFunction($x) + GammaFunction::logGammaFunction($y) - GammaFunction::logGammaFunction($x+$y));
 		}
 
 		public static function inverseIncompleteBetaFunction($p, $a, $b) {
