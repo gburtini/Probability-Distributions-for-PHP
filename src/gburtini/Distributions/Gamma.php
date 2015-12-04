@@ -16,6 +16,9 @@
 
 
 	namespace gburtini\Distributions;
+
+	require_once dirname(__FILE__) . "/Distribution.php";
+
 	use gburtini\Distributions\Gamma;
 	use gburtini\Distributions\Distribution;
 

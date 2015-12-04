@@ -27,6 +27,11 @@
 	 */
 
 	namespace gburtini\Distributions;
+	require_once dirname(__FILE__) . "/Gamma.php";
+	require_once dirname(__FILE__) . "/Distribution.php";
+	require_once dirname(__FILE__) . "/Accessories/GammaFunction.php";
+	require_once dirname(__FILE__) . "/Accessories/BetaFunction.php";
+
 	use gburtini\Distributions\Gamma;
 	use gburtini\Distributions\Distribution;
 	use gburtini\Distributions\Accessories\GammaFunction;
@@ -56,7 +61,7 @@
 			{
 				$x = ($a + $b) / 2;
 
-				if (BetaFunction::inverseBetaFunction($x,$this->alpha,$this->beta) > $p)
+				if (BetaFunction::incompleteBetaFunction($x,$this->alpha,$this->beta) > $p)
 					$b = $x;
 				else
 					$a = $x;

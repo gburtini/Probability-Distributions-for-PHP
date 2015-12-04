@@ -1,6 +1,8 @@
 <?php
 
 	namespace gburtini\Distributions;
+	require_once dirname(__FILE__) . "/IDistribution.php";
+
 	use gburtini\Distributions\IDistribution;
 
 	abstract class Distribution implements IDistribution {
