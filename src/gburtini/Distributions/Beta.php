@@ -56,7 +56,8 @@
 
 			$iter_num = 0;
 
-			while ((($b - $a) > $precision) & ($iter_num < 100))
+			// limiting the iter_num to 100 is a bit of a hack. I am not really sold.
+			while ((($b - $a) > $precision) && ($iter_num < 100))
 			{
 				$x = ($a + $b) / 2;
 
