@@ -48,7 +48,6 @@
 			$this->beta = $b;
 		}
 		
-		// TODO: check this.
 		public function icdf($p) {
 			$x = 0;
 			$a = 0;
