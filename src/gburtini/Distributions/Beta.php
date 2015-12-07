@@ -32,6 +32,7 @@
 	require_once dirname(__FILE__) . "/Accessories/GammaFunction.php";
 	require_once dirname(__FILE__) . "/Accessories/BetaFunction.php";
 
+	
 	use gburtini\Distributions\Gamma;
 	use gburtini\Distributions\Distribution;
 	use gburtini\Distributions\Accessories\GammaFunction;
@@ -48,16 +49,15 @@
 			$this->beta = $b;
 		}
 		
-		// TODO: check this.
 		public function icdf($p) {
 			$x = 0;
 			$a = 0;
 			$b = 1;
-			$precision = 1e-15;
-
+			$precision = 1e-15;		// these two variables can be changed
+			$maxiters = 100;		// and should probably be offered in a more configuration friendly way
 			$iter_num = 0;
 
-			while ((($b - $a) > $precision) & ($iter_num < 100))
+			while ((($b - $a) > $precision) && ($iter_num < $maxiters))
 			{
 				$x = ($a + $b) / 2;
 
