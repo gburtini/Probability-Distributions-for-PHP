@@ -1,11 +1,11 @@
 Probability Distributions for PHP
 =================================
 
-A fully PHP implementation of a number of tools for working with statistical distributions in PHP. 
+A fully PHP implementation of a number of tools for working with statistical distributions in PHP. Currently compatible with PHP 5.2+ (at least -- possibly as little as PHP 5.0, but currently untested).  
 
 Installation
 ------------
-This package is available in Packagist/Composer as ``gburtini/distributions``.
+This package is available in Packagist/Composer as ``gburtini/distributions``. For noncomposer uses, clone the repository and require files directly. For pre-PHP 5.3 uses, require the pseudonamespaced implementation classes in the ugly/ subdirectory and prefix all class names with GBPDP\_.
 
 
 Supported Distributions
@@ -38,9 +38,11 @@ Namespaces
 ``gburtini\Distributions`` contains the distribution classes as indicated above. 
 ``gburtini\Distributions\Accessories`` contains BetaFunction and GammaFunction, two classes containing accessory functions for computing complete, incomplete and inverse beta and gamma functions numerically. 
 
+If you are using a version of PHP pre-namespaces, the ``ugly/`` directory to implements pseudonamespace ("ugly") names, with the prefix GBPDP\_ which can be used directly. If you have access to namespaces (PHP 5.3+) you should use the composer-compatible namespacing to interact with the classes.
+
 Alternatives
 ------------
-There is a [Statistics Functions package](http://php.net/manual/en/ref.stats.php) in PECL called ``stats`` which I have never been able to get to work and has been very quiet since 2006. There is plenty of code for individual distributions around the web, StackOverflow, etc., but in my experience it is hit and miss.
+There is a [Statistics Functions package](http://php.net/manual/en/ref.stats.php) in PECL called ``stats`` which I have never been able to get to work and has been very quiet since 2006. There is plenty of code for individual distributions around the web, StackOverflow, etc., but in my experience it is hit and miss. To whatever extent possible, I would be happy to (but have not yet) wrap the stats\_ functions (if ``function\_exists``) where they have functionality that this package does not.
 
 Future Work
 -----------
@@ -55,4 +57,5 @@ Future Work
 
 Pull Requests
 -------------
-I will happily merge any new distributions (ideally with tests, but I'm even happy to write the tests), improvements to my code, etc. Please submit a pull request or send me an email.
+I will happily merge any new distributions (ideally with tests, but I'm even happy to write the tests), improvements to my code, etc. Please submit a pull request or send me an email. This branch currently insists on PHP 5.2 compatibility.
+
