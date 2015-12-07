@@ -1,7 +1,7 @@
 Probability Distributions for PHP
 =================================
 
-A fully PHP implementation of a number of tools for working with statistical distributions in PHP. 
+A fully PHP implementation of a number of tools for working with statistical distributions in PHP. Currently compatible with PHP 5.3+ (5.2 compatibility in development!)
 
 Installation
 ------------
@@ -37,6 +37,8 @@ Namespaces
 ----------
 ``gburtini\Distributions`` contains the distribution classes as indicated above. 
 ``gburtini\Distributions\Accessories`` contains BetaFunction and GammaFunction, two classes containing accessory functions for computing complete, incomplete and inverse beta and gamma functions numerically. 
+
+If you are using a version of PHP pre-namespaces, the intent in this branch is for the ``ugly/`` directory to implement pseudonamespace ("ugly") names, with the prefix GBPDP_.
 
 Alternatives
 ------------
