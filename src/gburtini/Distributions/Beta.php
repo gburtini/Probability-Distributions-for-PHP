@@ -57,6 +57,7 @@
 			$maxiters = 100;		// and should probably be offered in a more configuration friendly way
 			$iter_num = 0;
 
+			// limiting the iter_num to 100 is a bit of a hack. I am not really sold.
 			while ((($b - $a) > $precision) && ($iter_num < $maxiters))
 			{
 				$x = ($a + $b) / 2;
