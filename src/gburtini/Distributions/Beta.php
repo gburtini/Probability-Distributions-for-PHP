@@ -27,69 +27,19 @@
 	 */
 
 	namespace gburtini\Distributions;
-	require_once dirname(__FILE__) . "/Gamma.php";
-	require_once dirname(__FILE__) . "/Distribution.php";
-	require_once dirname(__FILE__) . "/Accessories/GammaFunction.php";
-	require_once dirname(__FILE__) . "/Accessories/BetaFunction.php";
+	require_once dirname(__FILE__) . "/../../../ugly/Beta.php";	// we have to get this from the ugly implementation for PHP 5.2 support.
+
+	/*
+		require_once dirname(__FILE__) . "/Gamma.php";
+		require_once dirname(__FILE__) . "/Distribution.php";
+		require_once dirname(__FILE__) . "/Accessories/GammaFunction.php";
+		require_once dirname(__FILE__) . "/Accessories/BetaFunction.php";
 
 	
-	use gburtini\Distributions\Gamma;
-	use gburtini\Distributions\Distribution;
-	use gburtini\Distributions\Accessories\GammaFunction;
-	use gburtini\Distributions\Accessories\BetaFunction;
-	class Beta extends Distribution {
-		public $alpha;
-		public $beta;
+		use gburtini\Distributions\Gamma;
+		use gburtini\Distributions\Distribution;
+		use gburtini\Distributions\Accessories\GammaFunction;
+		use gburtini\Distributions\Accessories\BetaFunction;
+	*/
 
-		// create a Beta(α, β) distribution
-		public function __construct($a, $b) {
-			static::validateParameters($a, $b);
-			
-			$this->alpha = $a;
-			$this->beta = $b;
-		}
-		
-		public function icdf($p) {
-			$x = 0;
-			$a = 0;
-			$b = 1;
-			$precision = 1e-15;		// these two variables can be changed
-			$maxiters = 100;		// and should probably be offered in a more configuration friendly way
-			$iter_num = 0;
-
-			// limiting the iter_num to 100 is a bit of a hack. I am not really sold.
-			while ((($b - $a) > $precision) && ($iter_num < $maxiters))
-			{
-				$x = ($a + $b) / 2;
-
-				if (BetaFunction::incompleteBetaFunction($x,$this->alpha,$this->beta) > $p)
-					$b = $x;
-				else
-					$a = $x;
-				$iter_num = $iter_num + 1;
-			}
-
-			return $x;
-		}
-		
-		public function rand() { 
-			return static::draw($this->alpha, $this->beta); 
-		}
-
-		public static function draw($a, $b) {
-			$ag = Gamma::draw($a, 1);
-			$bg = Gamma::draw($b, 1);
-			
-			return ($ag / ($ag+$bg));
-		}
-
-		public static function validateParameters($a, $b) {
-			$a = floatval($a);
-			$b = floatval($b);
-			
-			if($a <= 0 || $b <= 0) {
-				throw new \InvalidArgumentException("α (\$a = " . var_export($a, true) . "), β (\$b = " . var_export($b, true) . ") must each be greater than 0. ");
-			}
-		}
-	}
-	
+	class Beta extends \GBPDP_Beta {}	
