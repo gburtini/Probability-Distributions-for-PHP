@@ -1,7 +1,7 @@
 Probability Distributions for PHP
 =================================
 
-A fully PHP implementation of a number of tools for working with statistical distributions in PHP. Currently compatible with PHP 5.3+ (5.2 compatibility in development!)
+A fully PHP implementation of a number of tools for working with statistical distributions in PHP. Currently compatible with PHP 5.2+ (at least -- possibly as little as PHP 5.0, but currently untested).  
 
 Installation
 ------------
@@ -57,4 +57,5 @@ Future Work
 
 Pull Requests
 -------------
-I will happily merge any new distributions (ideally with tests, but I'm even happy to write the tests), improvements to my code, etc. Please submit a pull request or send me an email.
+I will happily merge any new distributions (ideally with tests, but I'm even happy to write the tests), improvements to my code, etc. Please submit a pull request or send me an email. This branch currently insists on PHP 5.2 compatibility.
+

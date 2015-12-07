@@ -35,12 +35,16 @@
 
 			$sum = array_sum($draws);
 
-			// PHP 5.2 TODO: cannot use anonymous functions like this.
+			// PHP 5.2 cannot use anonymous functions, so call create_function instead.
 			return array_map(
-				function ($draws) use ($sum) {
+				create_function('$draws,$sum', 'return $draws/$sum;'),
+
+				/*function ($draws) use ($sum) {
 					return $draws/$sum;
-				},
-				$draws
+				},*/
+
+				$draws, 
+				array_fill(0, count($draws), $sum)
 			);
 		}
 	}
