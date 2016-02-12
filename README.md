@@ -1,6 +1,8 @@
 Probability Distributions for PHP
 =================================
 
+[![Build Status](https://travis-ci.org/gburtini/Probability-Distributions-for-PHP.svg)](https://travis-ci.org/gburtini/Probability-Distributions-for-PHP.svg)
+
 A fully PHP implementation of a number of tools for working with statistical distributions in PHP. Currently compatible with PHP 5.2+ (at least -- possibly as little as PHP 5.0, but currently untested).  
 
 Installation
