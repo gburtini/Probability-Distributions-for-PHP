@@ -42,7 +42,7 @@
 
 		// $list should be a hash of name=>value. this is used only in error messages.
 		protected static function renderParameters($list) {
-			$ret = [];
+			$ret = array();
 			foreach($list as $k=>$v) {
 				$ret[] = "$k = " . var_export($v, true);
 			}
