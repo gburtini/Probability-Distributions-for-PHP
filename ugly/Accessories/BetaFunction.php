@@ -14,7 +14,7 @@
 			$a1 = $a - 1;
 			$b1 = $b - 1;
 			$j = 0;
-			$lna; $lnb; $pp; $t; $u; $err; $x; $al; $h; $w; $afac;
+			//$lna; $lnb; $pp; $t; $u; $err; $x; $al; $h; $w; $afac;
 			if ($p <= 0)
 				return 0;
 			if ($p >= 1)
@@ -79,14 +79,17 @@
 			$maxit = 100;
 			$eps = 3e-16;
 			$fpmin = 1e-30;
-			$aa;
-			$c;
-			$d;
-			$del;
-			$h;
-			$qab; 
-			$qam;
-			$qap;
+			/*	
+				// mentioning these causes E_NOTICEs in HipHop.
+				$aa;
+				$c;
+				$d;
+				$del;
+				$h;
+				$qab; 
+				$qam;
+				$qap;
+			*/
 
 			$qab = $a + $b;
 			$qap = $a + 1;
