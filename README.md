@@ -28,7 +28,7 @@ Interface
 * *Constructor* - takes in the parameters of the distribution and returns an instance.
 * public function *pdf*($x) - returns the [density](https://en.wikipedia.org/wiki/Probability_density_function) or [mass](https://en.wikipedia.org/wiki/Probability_mass_function) at a given *discretized* point.
 * public function *pmf*($x) - alias for pdf.
-* public function *cdf*($x) - returns the cumulative [density](https://en.wikipedia.org/wiki/Probability_density_function) from -∞ to $x.
+* public function *cdf*($x) - returns the cumulatfive [density](https://en.wikipedia.org/wiki/Probability_density_function) from -∞ to $x.
 * public function *icdf*($y) - inverse CDF function, for a given density, returns a point.
 * public function *quantile*($y) - alias for icdf.
 * public function *rand*() - draws a sample from this distribution.
@@ -44,7 +44,7 @@ If you are using a version of PHP pre-namespaces, the ``ugly/`` directory to imp
 
 Alternatives
 ------------
-There is a [Statistics Functions package](http://php.net/manual/en/ref.stats.php) in PECL called ``stats`` which I have never been able to get to work and has been very quiet since 2006. There is plenty of code for individual distributions around the web, StackOverflow, etc., but in my experience it is hit and miss. To whatever extent possible, I would be happy to (but have not yet) wrap the stats\_ functions (if ``function\_exists``) where they have functionality that this package does not.
+There is a [Statistics Functions package](http://php.net/manual/en/ref.stats.php) in PECL called ``stats`` which I have never been able to get to work and has been very quiet since 2006. There is plenty of code for individual distributions around the web, StackOverflow, etc., but in my experience it is hit and miss. To whatever extent possible, I would be happy to (but have not yet) wrap the stats\_ functions (if ``function_exists``) where they have functionality that this package does not.
 
 Future Work
 -----------
