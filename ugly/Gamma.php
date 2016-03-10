@@ -4,8 +4,8 @@
 	 *
 	 * This gamma implementation requires that $alpha (aka shape) is greater than 0, rather than some old definitions that require it to be > -1.
 	 *
-	 * Copyright (C) 2015 Giuseppe Burtini <joe@iterative.ca>. 
-	 * 
+	 * Copyright (C) 2015 Giuseppe Burtini <joe@iterative.ca>.
+	 *
 	 * Other Credits
 	 * -------------
 	 * Interface and structure all (C) Giuseppe Burtini.
@@ -17,19 +17,19 @@
 	require_once dirname(__FILE__) . "/Distribution.php";
 
 	class GBPDP_Gamma extends GBPDP_Distribution {
-		protected $shape; 
+		protected $shape;
 		protected $rate;
 		public function __construct($shape, $rate) {
 			$this->shape = floatval($shape);
 			$this->rate = floatval($rate);
 		}
-		public function rand() { 
-			return self::draw($this->shape, $this->rate); 
+		public function rand() {
+			return self::draw($this->shape, $this->rate);
 		}
-		public static function draw($shape, $rate) {	
+		public static function draw($shape, $rate) {
 			// This is a translation of Python Software Foundation licensed code from the Python project.
 
-			$alpha = $shape; 
+			$alpha = $shape;
 			$beta = $rate;
 			self::validateParameters($alpha, $beta);
 
