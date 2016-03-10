@@ -6,5 +6,5 @@
 	 */
 
 	namespace gburtini\Distributions;
-	require_once dirname(__FILE__) . "/../../../ugly/Binomial.php";
-	class Binomial extends \GBPDP_Binomial {}
+	require_once dirname(__FILE__) . "/../../../ugly/Bernoulli.php";
+	class Bernoulli extends GBPDP_Bernouilli {}
