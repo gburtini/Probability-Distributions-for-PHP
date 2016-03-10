@@ -8,6 +8,7 @@
 * Implementation by Frank Wikström.
 */
 require_once dirname(__FILE__) . "/Distribution.php";
+require_once dirname(__FILE__) . "/Accessories/GammaFunction.php";
 
 class GBPDP_Binomial extends GBPDP_Distribution {
 	public $n;
