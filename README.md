@@ -14,7 +14,8 @@ Supported Distributions
 The name given here is the name of the class.
 
 * [Normal](https://en.wikipedia.org/wiki/Normal_distribution)(location μ ∈ R, squared scale σ<sup>2</sup> > 0)
-* [Binomial](https://en.wikipedia.org/wiki/Binomial_distribution)(fraction in [0,1])
+* [Binomial](https://en.wikipedia.org/wiki/Binomial_distribution)(number of trials, probability of success per trial in [0,1])
+* [Bernoulli](https://en.wikipedia.org/wiki/Bernoulli_distribution)(fraction in [0,1])
 * [Beta](https://en.wikipedia.org/wiki/Beta_distribution)(shape α > 0, shape β > 0)
 * [Gamma](https://en.wikipedia.org/wiki/Gamma_distribution)(shape α > 0, rate β > 0)
 * [T](https://en.wikipedia.org/wiki/Student's_t_distribution)(degrees of freedom v > 0)
