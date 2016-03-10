@@ -8,7 +8,7 @@
  *
  * use gburtini\Distributions\Poisson;
  *
- * $poisson = new Poissin($lambda>0);
+ * $poisson = new Poisson($lambda>0);
  * $poisson->pdf($x) = [0,1]
  * $poisson->cdf($x) = [0,1] non-decreasing
  * $poisson::quantile($y in [0,1]) = [0,1] (aliased Poisson::icdf)
@@ -18,10 +18,7 @@
  *
  * Other Credits
  * -------------
- * Interface and structure all (C) Giuseppe Burtini.
- * Some work derived (with permission/license) from jStat - Javascript Statistical Library (MIT licensed).
- * Some work derived (with permission/license) from Python Core (PSL licensed).
- * Some work, especially advice, provided by Graeme Douglas.
+ * Implementation by Frank Wikström.
  */
  	require_once dirname(__FILE__) . "/Distribution.php";
 
