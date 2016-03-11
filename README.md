@@ -49,7 +49,7 @@ Example
 
 Examples are provided in a comment at the top of most of the implementation files. In general, you should be able to use the parametrization listed above under "Supported Distributions" to create classes that implement the methods under "Interfaces". 
 
-````
+```php
 use gburtini\Distributions\Beta;
 $beta = new Beta(1, 100);
 $draw = $beta->rand();
@@ -61,7 +61,7 @@ if($draw > 0.5) {
 // $beta->cdf($x) = [0,1] non-decreasing
 // $beta::quantile($y in [0,1]) = [0,1] (aliased Beta::icdf)
 // $beta->rand() = [0,1]
-````
+```
 
 Alternatives
 ------------
