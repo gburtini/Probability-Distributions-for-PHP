@@ -43,6 +43,26 @@ Namespaces
 
 If you are using a version of PHP pre-namespaces, the ``ugly/`` directory to implements pseudonamespace ("ugly") names, with the prefix GBPDP\_ which can be used directly. If you have access to namespaces (PHP 5.3+) you should use the composer-compatible namespacing to interact with the classes.
 
+
+Example
+-------
+
+Examples are provided in a comment at the top of most of the implementation files. In general, you should be able to use the parametrization listed above under "Supported Distributions" to create classes that implement the methods under "Interfaces". 
+
+````
+use gburtini\Distributions\Beta;
+$beta = new Beta(1, 100);
+$draw = $beta->rand();
+if($draw > 0.5) {
+  echo "We drew a number bigger than 0.5 from a Beta(1,100).\n";
+}
+
+// $beta->pdf($x) = [0,1]
+// $beta->cdf($x) = [0,1] non-decreasing
+// $beta::quantile($y in [0,1]) = [0,1] (aliased Beta::icdf)
+// $beta->rand() = [0,1]
+````
+
 Alternatives
 ------------
 There is a [Statistics Functions package](http://php.net/manual/en/ref.stats.php) in PECL called ``stats`` which I have never been able to get to work and has been very quiet since 2006. There is plenty of code for individual distributions around the web, StackOverflow, etc., but in my experience it is hit and miss. To whatever extent possible, I would be happy to (but have not yet) wrap the stats\_ functions (if ``function_exists``) where they have functionality that this package does not.
