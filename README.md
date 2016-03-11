@@ -21,6 +21,7 @@ The name given here is the name of the class.
 * [T](https://en.wikipedia.org/wiki/Student's_t_distribution)(degrees of freedom v > 0)
 * [Dirichlet](https://en.wikipedia.org/wiki/Dirichlet_distribution)(array of concentration parameters α > 0)
 * [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution)(mean λ > 0)
+
 All supported distributions are in the namespace ``gburtini\Distributions`` and implement the following interface. Implementing new distributions is as easy as extending ``gburtini\Distributions\Distribution`` or one of the existing implementations.
 
 Interface
