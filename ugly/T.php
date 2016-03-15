@@ -105,15 +105,6 @@
 
 			$t = sqrt( $k / $z - $k );
 			return $sign * $t;
-
-
-
-
-			/*
-			$x = GBPDP_BetaFunction::inverseIncompleteBetaFunction(2 * min($y, 1 - $y), 0.5 * $this->degrees, 0.5);
-			$x = sqrt($this->degrees * (1 - $y) / $y);  Here was the bug!
-			return ($y > 0.5) ? $x : -$x;
-			*/
 		}
 	}
 

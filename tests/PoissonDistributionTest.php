@@ -23,35 +23,44 @@
 			$d = new Poisson(7.0);
 
 			$scale = 50000;
+			$cutoff = 10.0;
+			$counter = 0;
 			$draws = new SplFixedArray($scale);
 			for($i = 0; $i < $scale; $i++) {
-				$draws[$i] = $d->rand();
+				$x = $d->rand();
+				$draws[$i] = $x;
+
+				if ($x > $cutoff) $counter = $counter + 1;
 			}
 
 			$number = array_sum((array) $draws) / count($draws);
-			$this->assertEquals(7.0, $number, "Attempting to draw from P(7.0) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.01);
+			$this->assertEquals( $number,7.0, "Attempting to draw from P(7.0) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.01);
+
+			$p = $counter / $scale;
+			$this->assertEquals(1-$d->cdf($cutoff), $p, "Attempting to draw from P(7.0) {$scale} times gives the wrong number of values greater than {$cutoff}. This could be just random chance.", 0.01);
+
 		}
 
         public function testPoissonPDF() {
             $d = new Poisson(2.5);
 
-            $this->assertEquals($d->pdf(0), 0.08208499862, 1e-9);
-            $this->assertEquals($d->pdf(1), 0.2052124966, 1e-9);
-            $this->assertEquals($d->pdf(2), 0.2565156207, 1e-9);
-            $this->assertEquals($d->pdf(3), 0.2137630172, 1e-9);
-            $this->assertEquals($d->pdf(12), 0.00001021426063, 1e-12);
+            $this->assertEquals( 0.08208499862, $d->pdf(0), 1e-9);
+            $this->assertEquals( 0.2052124966, $d->pdf(1), 1e-9);
+            $this->assertEquals( 0.2565156207, $d->pdf(2), 1e-9);
+            $this->assertEquals( 0.2137630172, $d->pdf(3), 1e-9);
+            $this->assertEquals( 0.00001021426063,$d->pdf(12), 1e-12);
         }
 
         public function testPoissonCDF() {
             $d = new Poisson(2.5);
 
-            $this->assertEquals($d->cdf(0), 0.08208499862, 1e-9);
-            $this->assertEquals($d->cdf(1), 0.2872974952, 1e-9);
-            $this->assertEquals($d->cdf(2), 0.5438131159, 1e-9);
-            $this->assertEquals($d->cdf(3), 0.7575761331, 1e-9);
-            $this->assertEquals($d->cdf(4), 0.8911780189, 1e-9);
-            $this->assertEquals($d->cdf(5), 0.9579789618, 1e-9);
-            $this->assertEquals($d->cdf(12), 0.9999976158, 1e-9);
+            $this->assertEquals( 0.08208499862,$d->cdf(0), 1e-9);
+            $this->assertEquals( 0.2872974952,$d->cdf(1), 1e-9);
+            $this->assertEquals( 0.5438131159,$d->cdf(2), 1e-9);
+            $this->assertEquals( 0.7575761331,$d->cdf(3), 1e-9);
+            $this->assertEquals( 0.8911780189,$d->cdf(4), 1e-9);
+            $this->assertEquals( 0.9579789618,$d->cdf(5), 1e-9);
+            $this->assertEquals( 0.9999976158,$d->cdf(12), 1e-9);
         }
 
         public function testPoissonICDF() {
@@ -82,5 +91,19 @@
 			$number = array_sum((array) $draws) / count($draws);
 			$this->assertEquals(7.0, $number, "Attempting to draw from P(7.0) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.01);
 		}
+
+		public function testLambda() {
+			mt_srand(1);
+
+			for ($i = 0; $i < 100; $i++) {
+				$p = mt_rand()/mt_getrandmax();
+				$k = mt_rand(1, 10);
+				$lambda = Poisson::lambda($k, $p);
+				$P = new Poisson($lambda);
+				$this->assertEquals($P->cdf($k), $p, "Inverse parameter computation in Poisson distribution giving unecxpected result. (\$k = $k, \$p = $p)", 1e-9);
+			}
+		}
+
+
 
 	}
