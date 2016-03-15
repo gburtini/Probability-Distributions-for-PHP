@@ -22,6 +22,7 @@
  */
  	require_once dirname(__FILE__) . "/Distribution.php";
     require_once dirname(__FILE__) . "/Accessories/GammaFunction.php";
+    require_once dirname(__FILE__) . "/Accessories/IncompleteGammaFunction.php";
 
 	class GBPDP_Poisson extends GBPDP_Distribution {
 		public $lambda;
@@ -85,39 +86,61 @@
 			return exp($logP);
 		}
 
-		/** Could be made more efficient with an implementation of the incomplete Gamma function **/
 		public function cdf($k)
 		{
-			$accumuluated = 0.0;
-
-			for ($i=0; $i<=$k; $i++) {
-				$accumuluated += $this->pdf($i);
-			}
-			return $accumuluated;
+            $k = floor($k);
+            return GBPDP_IncompleteGammaFunction::ComplementedIncompleteGamma($k+1, $this->lambda);
 		}
 
-		/** Again, not a very efficient implementation */
-		public function icdf($p)
-		{
-			if ($p < 0 || $p > 1) {
-				throw new InvalidArgumentException("Parameter (\$p = " . var_export($p, true) . " must be between 0 and 1. ");
-			}
 
-			if ($p == 1) return INF;
+        public function icdf($p)
+        {
+            if ($p < 0 || $p > 1) {
+                throw new InvalidArgumentException("Parameter (\$p = " . var_export($p, true) . " must be between 0 and 1. ");
+            }
 
+            if ($p == 0) return 0;
+            if ($p == 1) return INF;
 
-			$accumuluated = 0.0;
-			$k = 0;
+            $lambda = $this->lambda;
 
-			do {
-				$delta = $this->pdf($k);
-				$accumuluated = $accumuluated + $delta;
+            $w = GBPDP_IncompleteGammaFunction::InverseNormal($p);
+            $w2 = $w*$w;
+            $w4 = $w2*$w2;
 
-				if ($accumuluated >= $p) return $k;
+            $Q1 = $lambda + $w * sqrt($lambda) + (2.0 + $w*$w)/6.0;
+            $Q2 = $Q1 - $w * (2.0 - $w2)/(72.0*sqrt($lambda));
 
-				$k = $k + 1;
-			} while($delta > 1e-9);
+            $error = (4.0 + 2.0*$w2 + $w4)/(160.0 * $lambda);
 
-			return $k;
-		}
+            $k0 = floor($Q2 - $error);
+            if ($k0 < 0) $k0 = 0;
+
+            // The error bound isn't completely reliable. Double check the result
+            // unfortunately, this will slow down the code by roughly a factor 2,
+            // but the implementation is still about twice as fast as the naive one
+
+            $check = $this->cdf($k0);
+            while ($check >= $p) {
+                $dp = $this->pdf($k0);
+                if ($check - $dp < $p) return $k0;
+                $check = $check - $dp;
+                $k0 = $k0 - 1;
+                if ($k0 <= 0) return 0;
+            }
+
+            while ($check < $p) {
+                $dp = $this->pdf($k0+1);
+                $check = $check + $dp;
+                $k0 = $k0 + 1;
+            }
+            return $k0;
+        }
+
+        // Returns the value of $lambda, such that Poisson($lambda)->cdf($k) == $p
+        public static function lambda($k, $p)
+        {
+            return GBPDP_IncompleteGammaFunction::InverseComplementedIncompleteGamma($k+1, $p);
+        }
+
 	}
