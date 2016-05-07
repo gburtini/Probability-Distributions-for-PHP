@@ -8,3 +8,4 @@
 	namespace gburtini\Distributions;
 	require_once dirname(__FILE__) . "/../../../ugly/Binomial.php";
 	class Binomial extends \GBPDP_Binomial {}
+	class BinomialCI extends \GBPDP_Binomial_CI {};	// ugly.
