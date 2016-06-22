@@ -9,6 +9,8 @@
 	 * Michael Nickerson (2004), Thomas Ziegler for the icdf function.
 	 */
 
+	require_once dirname(__FILE__) . "/Distribution.php";
+
 	class GBPDP_Normal extends GBPDP_Distribution {
 		// TODO: implement a skewness, kurtosis normal.
 		protected $mean;
