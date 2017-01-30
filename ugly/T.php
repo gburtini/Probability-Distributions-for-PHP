@@ -9,6 +9,7 @@
 	 * Some work derived (with permission/license) from jStat - Javascript Statistical Library (MIT licensed).
 	 */
 
+	require_once dirname(__FILE__) . "/Distribution.php";
 	require_once dirname(__FILE__) . "/Accessories/GammaFunction.php";
 	require_once dirname(__FILE__) . "/Accessories/BetaFunction.php";
 
