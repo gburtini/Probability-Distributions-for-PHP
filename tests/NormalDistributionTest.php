@@ -94,4 +94,35 @@
             $this->assertEquals($d->icdf(0.999999), 4.75342430881908, "Inverse CDF incorrect", 1e-7);
         }
 
+        public function testNormalICDFWithNonzeroMean() {
+			$mu = 0.78135;
+            $d = new Normal($mu,1);
+
+            $this->assertEquals($d->icdf(0.2), $mu -0.841621233572216, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.4), $mu -0.253347103135800, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.7),  $mu + 0.524400512708049, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.9),  $mu + 1.28155156554473, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.95), $mu + 1.64485362695213, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.975), $mu + 1.95996398453944, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.99), $mu + 2.32634787404074, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.9999), $mu + 3.71901648545454, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.999999), $mu + 4.75342430881908, "Inverse CDF incorrect", 1e-7);
+        }
+
+		public function testNormalICDFWithOtherVariance() {
+			$mu = 1;
+			$sigma = 0.7;
+            $d = new Normal($mu,$sigma*$sigma);
+
+            $this->assertEquals($d->icdf(0.2), $mu - $sigma * 0.841621233572216, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.4), $mu - $sigma * 0.253347103135800, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.7),  $mu + $sigma * 0.524400512708049, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.9),  $mu + $sigma * 1.28155156554473, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.95), $mu + $sigma * 1.64485362695213, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.975), $mu + $sigma * 1.95996398453944, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.99), $mu + $sigma * 2.32634787404074, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.9999), $mu + $sigma * 3.71901648545454, "Inverse CDF incorrect", 1e-7);
+            $this->assertEquals($d->icdf(0.999999), $mu + $sigma * 4.75342430881908, "Inverse CDF incorrect", 1e-7);
+        }
+
 	}

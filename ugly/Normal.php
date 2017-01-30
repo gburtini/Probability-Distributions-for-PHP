@@ -43,10 +43,12 @@
 
 			return exp(-$z*$z/2) / ( $this->variance * M_SQRTPI * M_SQRT2);
 		}
+
 		public function cdf($x) {
 		        $d = $x - $this->mean;
 		        return 0.5 * (1 + $this->erf($d / (sqrt($this->variance) * sqrt(2))));
 		}
+		
 		public function icdf($p) {
 			// Inverse ncdf approximation by Peter John Acklam, implementation adapted to
 			// PHP by Michael Nickerson, using Dr. Thomas Ziegler's C implementation as
@@ -114,7 +116,7 @@
 							$x = NULL;
 						}
 
-						return $x;
+						return $this->mean + $this->sd() * $x;
 			// END inverse ncdf implementation.
 		}
 
