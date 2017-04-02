@@ -11,4 +11,4 @@
 
 	namespace gburtini\Distributions;
 	require_once dirname(__FILE__) . "/../../../ugly/T.php";
-	class T extends GBPDP_T {}
+	class T extends \GBPDP_T {}

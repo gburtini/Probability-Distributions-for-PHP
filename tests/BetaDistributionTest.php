@@ -33,7 +33,7 @@
 
 			$d = new Beta(0.5, 0.5);
 		
-			$scale = 1000;
+			$scale = 5000;
 			$draws = new SplFixedArray($scale);
 			for($i = 0; $i < $scale; $i++) {
 				$draws[$i] = $d->rand();
@@ -61,7 +61,7 @@
 
 		public function testClassDraw() {
 			srand(1);
-			$scale = 1000;
+			$scale = 5000;
                         $draws = new SplFixedArray($scale);
                         for($i = 0; $i < $scale; $i++) {
 				$draws[$i] = Beta::draw(0.5, 0.5);

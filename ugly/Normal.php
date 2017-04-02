@@ -2,12 +2,14 @@
 	/*
 	 * Normal Distribution - Statistical Distributions for PHP
 	 *
-	 * Copyright (C) 2015 Giuseppe Burtini <joe@iterative.ca>. 
+	 * Copyright (C) 2015 Giuseppe Burtini <joe@iterative.ca>.
 	 *
 	 * Other credits
 	 * Box, Muller 1958 for the rand() method
 	 * Michael Nickerson (2004), Thomas Ziegler for the icdf function.
 	 */
+
+	require_once dirname(__FILE__) . "/Distribution.php";
 
 	class GBPDP_Normal extends GBPDP_Distribution {
 		// TODO: implement a skewness, kurtosis normal.
@@ -36,11 +38,18 @@
 		public static function draw($mean, $variance) {
 			return self::boxMuller()*sqrt($variance) + $mean;
 		}
+		public function pdf($x) {
+			$z = ($x - $this->mean)/$this->variance;
+
+			return exp(-$z*$z/2) / ( $this->variance * M_SQRTPI * M_SQRT2);
+		}
+
 		public function cdf($x) {
 		        $d = $x - $this->mean;
 		        return 0.5 * (1 + $this->erf($d / (sqrt($this->variance) * sqrt(2))));
 		}
-		public function icdf($y) {
+		
+		public function icdf($p) {
 			// Inverse ncdf approximation by Peter John Acklam, implementation adapted to
 			// PHP by Michael Nickerson, using Dr. Thomas Ziegler's C implementation as
 			// a guide.  http://home.online.no/~pjacklam/notes/invnorm/index.html
@@ -107,7 +116,7 @@
 							$x = NULL;
 						}
 
-						return $x;
+						return $this->mean + $this->sd() * $x;
 			// END inverse ncdf implementation.
 		}
 
@@ -123,14 +132,14 @@
 		public static function validateParameters($m, $v, $s, $k) {
 			if(!is_numeric($m) || !is_numeric($v) || !is_numeric($s) || !is_numeric($k))
 				throw new InvalidArgumentException("Non-numeric parameter in normal distribution (" . self::renderParameters(compact('m','v','s','k')) . ").");
-			if($v < 0)
-				throw new InvalidArgumentException("Variance must be strictly positive (it is σ-squared after all!). Currently, \$v = " . var_export($v) . ".");
-			
+			if($v <= 0)
+				throw new InvalidArgumentException("Variance must be strictly positive (it is σ-squared after all!). Currently, \$v = " . var_export($v, true) . ".");
+
 		}
-		
+
 		protected static function erf($x) {
 			    // translation of Press, Teukolsky, Vetterling, Flannery (2001) approximation.
-			    // https://en.wikipedia.org/wiki/Error_function#Numerical_approximation 
+			    // https://en.wikipedia.org/wiki/Error_function#Numerical_approximation
 			$t = 1 / (1 + 0.5 * abs($x));
 			$tau = $t * exp(
 			        - $x * $x
@@ -144,7 +153,7 @@
 			        + 1.48851587 * pow($t, 7)
 			        - 0.82215223 * pow($t, 8)
 			        + 0.17087277 * pow($t, 9));
-			
+
 			if ($x >= 0) {
 			    return 1 - $tau;
 			} else {

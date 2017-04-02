@@ -24,6 +24,11 @@
 	 * Some work derived (with permission/license) from jStat - Javascript Statistical Library (MIT licensed).
 	 * Some work derived (with permission/license) from Python Core (PSL licensed).
 	 * Some work, especially advice, provided by Graeme Douglas.
+	 *
+	 * Some Resources
+	 * --------------
+	 * http://cl.ly/code/1S0l1h0S2Y3B
+	 * http://stackoverflow.com/questions/9590225/is-there-a-library-to-generate-random-numbers-according-to-a-beta-distribution-f
 	 */
 
 	namespace gburtini\Distributions;
