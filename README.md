@@ -81,3 +81,8 @@ Future Work
 Pull Requests
 -------------
 I will happily merge any new distributions (ideally with tests, but I'm even happy to write the tests), improvements to my code, etc. Please submit a pull request or send me an email. This branch currently insists on PHP 5.2 compatibility.
+
+License
+-------
+
+[MIT licensed](https://tldrlegal.com/license/mit-license). Please contact me if this does not work for your use-case.
