@@ -2,11 +2,13 @@ Probability Distributions for PHP
 =================================
 [![Build Status](https://travis-ci.org/gburtini/Probability-Distributions-for-PHP.svg)](https://travis-ci.org/gburtini/Probability-Distributions-for-PHP.svg)
 
-A fully PHP implementation of a number of tools for working with statistical distributions in PHP. Currently compatible with PHP 5.2+ (at least -- possibly as little as PHP 5.0, but currently untested).
+A userland PHP implementation of a number of tools for working with statistical distributions in PHP. 
+
+**Compatibility**: PHP 5.3 and above. Tested on `5.3` through `7.1` as well as `nightly`. We do *not* currently support `hhvm`. 
 
 Installation
 ------------
-This package is available in Packagist/Composer as ``gburtini/distributions``. For noncomposer uses, clone the repository and require files directly. For pre-PHP 5.3 uses, require the pseudonamespaced implementation classes in the ugly/ subdirectory and prefix all class names with GBPDP\_.
+This package is available in Packagist/Composer as ``gburtini/distributions``. For noncomposer uses, clone the repository and require files directly. For pre-PHP 5.3 uses, require the pseudonamespaced implementation classes in the `ugly/` subdirectory and prefix all class names with `GBPDP_`.
 
 
 Supported Distributions
@@ -41,7 +43,7 @@ Namespaces
 ``gburtini\Distributions`` contains the distribution classes as indicated above.
 ``gburtini\Distributions\Accessories`` contains BetaFunction and GammaFunction, two classes containing accessory functions for computing complete, incomplete and inverse beta and gamma functions numerically.
 
-If you are using a version of PHP pre-namespaces, the ``ugly/`` directory to implements pseudonamespace ("ugly") names, with the prefix GBPDP\_ which can be used directly. If you have access to namespaces (PHP 5.3+) you should use the composer-compatible namespacing to interact with the classes.
+While unsupported, if you are using a version of PHP pre-namespaces, the ``ugly/`` directory implements pseudonamespaced ("ugly") names, with the prefix GBPDP\_ and can be used directly. If you have access to namespaces (PHP 5.3+) you should use the composer-compatible namespacing to interact with the classes. You **really** should upgrade your PHP version to a [supported version}(http://php.net/supported-versions.php).
 
 
 Example
