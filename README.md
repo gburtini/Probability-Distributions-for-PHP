@@ -43,7 +43,7 @@ Namespaces
 ``gburtini\Distributions`` contains the distribution classes as indicated above.
 ``gburtini\Distributions\Accessories`` contains BetaFunction and GammaFunction, two classes containing accessory functions for computing complete, incomplete and inverse beta and gamma functions numerically.
 
-While unsupported, if you are using a version of PHP pre-namespaces, the ``ugly/`` directory implements pseudonamespaced ("ugly") names, with the prefix GBPDP\_ and can be used directly. If you have access to namespaces (PHP 5.3+) you should use the composer-compatible namespacing to interact with the classes. You **really** should upgrade your PHP version to a [supported version}(http://php.net/supported-versions.php).
+While unsupported, if you are using a version of PHP pre-namespaces, the ``ugly/`` directory implements pseudonamespaced ("ugly") names, with the prefix GBPDP\_ and can be used directly. If you have access to namespaces (PHP 5.3+) you should use the composer-compatible namespacing to interact with the classes. You **really** should upgrade your PHP version to a [supported version](http://php.net/supported-versions.php).
 
 
 Example
