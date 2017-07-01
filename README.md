@@ -2,9 +2,9 @@ Probability Distributions for PHP
 =================================
 [![Build Status](https://travis-ci.org/gburtini/Probability-Distributions-for-PHP.svg)](https://travis-ci.org/gburtini/Probability-Distributions-for-PHP.svg)
 
-A userland PHP implementation of a number of tools for working with statistical distributions in PHP. 
+A userland PHP implementation of a number of tools for working with statistical distributions in PHP.
 
-**Compatibility**: PHP 5.3 and above. Tested on `5.3` through `7.1` as well as `nightly`. We do *not* currently support `hhvm`. 
+**Compatibility**: PHP 5.3 and above. Tested on `5.3` through `7.1` as well as `nightly`. We do *not* currently support `hhvm`.
 
 Installation
 ------------
@@ -23,6 +23,7 @@ The name given here is the name of the class.
 * [T](https://en.wikipedia.org/wiki/Student's_t_distribution)(degrees of freedom v > 0)
 * [Dirichlet](https://en.wikipedia.org/wiki/Dirichlet_distribution)(array of concentration parameters α > 0)
 * [Poisson](https://en.wikipedia.org/wiki/Poisson_distribution)(mean λ > 0)
+* [Weibull](https://en.wikipedia.org/wiki/Weibull_distribution)(shape k > 0, scale lambda > 0)
 
 All supported distributions are in the namespace ``gburtini\Distributions`` and implement the following interface. Implementing new distributions is as easy as extending ``gburtini\Distributions\Distribution`` or one of the existing implementations.
 
@@ -49,7 +50,7 @@ While unsupported, if you are using a version of PHP pre-namespaces, the ``ugly/
 Example
 -------
 
-Examples are provided in a comment at the top of most of the implementation files. In general, you should be able to use the parametrization listed above under "Supported Distributions" to create classes that implement the methods under "Interfaces". 
+Examples are provided in a comment at the top of most of the implementation files. In general, you should be able to use the parametrization listed above under "Supported Distributions" to create classes that implement the methods under "Interfaces".
 
 ```php
 use gburtini\Distributions\Beta;
@@ -73,7 +74,7 @@ Future Work
 -----------
 * First, implement the interface for all distributions!
 * Add mean, median, mode, variance calculators.
-* Implement more univariate distributions. For example, any of: Cauchy, chi-squared, exponential, F, geometric, hypergeometric, Laplace, log-normal, Maxwell–Boltzmann, Pareto, Rademacher, Rayleigh, uniform, Wakeby, Weibull, Zipf, Zipf-Mandelbrot. Producing more distributions may be aided by the [cool relational diagram](http://www.johndcook.com/blog/distribution_chart/) on John D. Cook's website.
+* Implement more univariate distributions. For example, any of: Cauchy, chi-squared, exponential, F, geometric, hypergeometric, Laplace, log-normal, Maxwell–Boltzmann, Pareto, Rademacher, Rayleigh, uniform, Wakeby, Zipf, Zipf-Mandelbrot. Producing more distributions may be aided by the [cool relational diagram](http://www.johndcook.com/blog/distribution_chart/) on John D. Cook's website.
 * Implement support for multivariate distributions, especially the [multivariate normal](https://en.wikipedia.org/wiki/Multivariate_normal_distribution), but also: multinomial, etc.
 * Generalization of distributions' implementation where appropriate, such as an [elliptical distributions](https://en.wikipedia.org/wiki/Elliptical_distribution) approach to implementing the normal or a categorical distribution implementation of the Bernoulli.
 * Design a good interface for alternative parameterizations (for example, [precision-denoted normal](https://en.wikipedia.org/wiki/Normal_distribution#Alternative_parameterizations), mode and concentration denoted beta, and shape and rate denoted gamma).
