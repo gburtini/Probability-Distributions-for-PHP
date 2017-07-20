@@ -49,7 +49,6 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 			$draws[$i] = $x;
 
 			if ($x > $cutoff) $counter = $counter + 1;
-
 		}
 
 		$number = array_sum((array) $draws) / count($draws);
@@ -57,7 +56,7 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($number, $mean, "Attempting to draw from Weibull(3.2, 1.4)) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.001);
 
 		$p = $counter / $scale;
-		$this->assertEquals($p, 1-$d->cdf($cutoff), "Attempting to draw from  Weibull(3.2, 1.4))  {$scale} times gives the wrong number of values greater than {$cutoff}. This could be just random chance.", 0.001);
+		$this->assertEquals($p, 1 - $d->cdf($cutoff), "Attempting to draw from  Weibull(3.2, 1.4))  {$scale} times gives the wrong number of values greater than {$cutoff}. This could be just random chance.", 0.001);
 	}
 
 
@@ -75,7 +74,6 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals(0.218786337871, $d->pdf(2.0), "PDF incorrect", $accuracy);
 		$this->assertEquals(0.0136761908489, $d->pdf(2.5), "PDF incorrect", $accuracy);
 
-
 		$d = new Weibull(0.2, 3.0);
 
 		$this->assertEquals(0, $d->pdf(-0.5), "PDF incorrect", $accuracy);
@@ -89,7 +87,6 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 
 
 	public function test_Weibull_CDF() {
-
 		$accuracy = 1e-10;
 
 		$d = new Weibull(3.2, 1.4);
@@ -141,41 +138,34 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 
 
 	public function test_Weibull_mean() {
-
 		$accuracy = 1e-10;
 
 		$d = new Weibull(3.2, 1.4);
-
 		$this->assertEquals(1.253915138, $d->mean(), "mean incorrect", $accuracy);
 
 		$d = new Weibull(0.2, 3.0);
-
 		$this->assertEquals(360, $d->mean(), "mean incorrect", $accuracy);
 	}
 
 	public function test_Weibull_variance() {
-
 		$accuracy = 1e-10;
 
 		$d = new Weibull(3.2, 1.4);
-
 		$this->assertEquals(0.1849824157, $d->variance(), "variance incorrect", $accuracy);
 
 		$d = new Weibull(0.2, 3.0);
-
 		$this->assertEquals(3.25296000000e7, $d->variance(), "variance incorrect", 1e-6);
 	}
 
 	public function test_Weibull_CDF_ICDF() {
-
 		$accuracy = 1e-8;
 
-		for($i=0;$i<100;$i++) {
-			$k = 3*mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
-			$lambda = 4*mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
+		for($i = 0; $i < 100; $i++) {
+			$k = 3 * mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
+			$lambda = 4 * mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
 			$d = new Weibull($k, $lambda);
-			$p = mt_rand()/mt_getrandmax();
-			$this->assertEquals($p,$d->cdf($d->icdf($p)), "CDF and inverse CDF mismatch", $accuracy);
+			$p = mt_rand() / mt_getrandmax();
+			$this->assertEquals($p, $d->cdf($d->icdf($p)), "CDF and inverse CDF mismatch", $accuracy);
 		}
 	}
 
