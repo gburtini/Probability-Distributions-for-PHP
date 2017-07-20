@@ -56,19 +56,18 @@
 
 
 		public function pdf($x) {
-
 			if ($x < 0) return 0.0;
 
 			$temp = $x / $this->lambda;
 
-			return ($this->k/$this->lambda)*pow($temp, $this->k - 1) * exp(-pow($temp, $this->k));
+			return ($this->k / $this->lambda) * pow($temp, $this->k - 1) * exp(-pow($temp, $this->k));
   		}
 
 		public function cdf($x) {
 
 			if ($x < 0) return 0.0;
 
-			return 1 - exp(-pow($x/$this->lambda, $this->k));
+			return 1 - exp(-pow($x / $this->lambda, $this->k));
 
 		}
 
@@ -78,7 +77,7 @@
 				throw new InvalidArgumentException("Parameter (\$p = " . var_export($p, true) . " must be between 0 and 1. ");
 			}
 
-			return $this->lambda * exp(log(-log(1-$p))/$this->k);
+			return $this->lambda * exp(log(-log(1 - $p)) / $this->k);
 
 		}
 
@@ -88,8 +87,8 @@
 		}
 
 		public static function draw($k, $lambda) {
-			$x = mt_rand()/mt_getrandmax();
-			return $lambda * exp(log(-log($x))/$k);
+			$x = mt_rand() / mt_getrandmax();
+			return $lambda * exp(log(-log($x)) / $k);
 		}
 
 	}
