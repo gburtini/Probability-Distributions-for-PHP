@@ -30,6 +30,25 @@
 			//$this->skewness = floatval($skewness);
 			//$this->kurtosis = floatval($kurtosis);
 		}
+		
+		/**
+		 * written by: Waqas Tariq Dar : waqastariqdar@gmail.com 
+		 * This setter function sets the MEAN for calling object
+		 * @param int $mean
+		 */
+
+		public function setMean($mean = 0) {
+			$this->mean = floatval($mean);
+		}
+
+		/**
+		 * written by: Waqas Tariq Dar : waqastariqdar@gmail.com 
+		 * This setter function sets the variance for calling object
+		 * @param int $variance
+		 */
+		public function setVariance($variance = 1) {
+			$this->variance = floatval($variance);
+		}
 
 		public function rand() {
 			return self::draw($this->mean, $this->variance);
