@@ -7,7 +7,7 @@
 		public function pmf($x) { return $this->pdf($x); }
 
 		public function cdf($x) {
-			throw new BadMethodCallException("CDF not implemented. Please create a pull request if you implement it yourself.");
+			return ($x > 1 || $x < 0) ? ($x > 1) * 1 : GBPDP_BetaFunction::incompleteBetaFunction($x, $this->alpha, $this->beta);
 		}
 
 		public function icdf($y) {
