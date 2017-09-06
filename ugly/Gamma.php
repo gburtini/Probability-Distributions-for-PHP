@@ -23,6 +23,26 @@
 			$this->shape = floatval($shape);
 			$this->rate = floatval($rate);
 		}
+		
+		/**
+		 * written by: Waqas Tariq Dar : waqastariqdar@gmail.com , waqas.tariq@lums.edu.pk , waqas.tariq@pucit.edu.pk
+		 * This setter function sets the shape parameter for calling object
+		 * @param $shape
+		 */
+
+		public function setShape($shape) {
+			$this->shape = floatval($shape);
+		}
+
+		/**
+		 * written by: Waqas Tariq Dar : waqastariqdar@gmail.com , waqas.tariq@lums.edu.pk , waqas.tariq@pucit.edu.pk
+		 * This setter function sets the rate parameter for calling object
+		 * @param $rate
+		 */
+
+		public function setRate($rate) {
+			$this->rate = floatval($rate);
+		}
 		public function rand() {
 			return self::draw($this->shape, $this->rate);
 		}
