@@ -46,6 +46,32 @@
 			$this->beta = $b;
 		}
 		
+		/**
+		 * written by: Waqas Tariq Dar : waqastariqdar@gmail.com , waqas.tariq@lums.edu.pk , waqas.tariq@pucit.edu.pk
+		 * This setter function sets the alpha parameter for calling object
+		 * @param $a
+		 */
+
+		public function setAlpha($a) {
+			if($a <= 0) {
+				throw new InvalidArgumentException("α (\$a = " . var_export($a, true) . ") must be greater than 0. ");
+			}
+			$this->alpha = $a;
+		}
+
+		/**
+		 * written by: Waqas Tariq Dar : waqastariqdar@gmail.com , waqas.tariq@lums.edu.pk , waqas.tariq@pucit.edu.pk
+		 * This setter function sets the beta parameter for calling object
+		 * @param $b
+		 */
+
+		public function setBeta($b) {
+			if($b <= 0) {
+				throw new InvalidArgumentException("β (\$b = " . var_export($b, true) . ") must be greater than 0. ");
+			}
+			$this->beta = $b;
+		}
+		
 		public function icdf($p) {
 			$x = 0;
 			$a = 0;
