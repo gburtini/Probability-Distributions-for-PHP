@@ -22,6 +22,17 @@
 			$this->degrees = floatval($dof); // float, not integer: http://stats.stackexchange.com/questions/116511/explanation-for-non-integer-degrees-of-freedom-in-t-test-with-unequal-variances
 			// TODO: some overflow problems to be dealt with here (large DOF)
 		}
+		
+		/**
+		 * written by: Waqas Tariq Dar : waqastariqdar@gmail.com , waqas.tariq@lums.edu.pk , waqas.tariq@pucit.edu.pk
+		 * This setter function sets the degrees of freedom parameter for calling object
+		 * @param $dof
+		 */
+
+		public function setDOF($dof) {
+			self::validateParameters($dof);
+			$this->degrees = floatval($dof); 
+		}
 
 		public static function validateParameters($dof) {
 			if(!is_numeric($dof))
