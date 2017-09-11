@@ -4,11 +4,13 @@ Probability Distributions for PHP
 
 A userland PHP implementation of a number of tools for working with statistical distributions in PHP. 
 
-**Compatibility**: PHP 5.3 and above. Tested on `5.3` through `7.1` as well as `nightly`. We do *not* currently support `hhvm`. 
+**Compatibility**: PHP 5.3 and above. Tested and supported on `5.4` through `7.1` as well as `nightly`. We do *not* currently support `hhvm`. As Travis-CI stopped easily supporting PHP 5.3, we stopped testing on it. 
 
 Installation
 ------------
-This package is available in Packagist/Composer as ``gburtini/distributions``. For noncomposer uses, clone the repository and require files directly. For pre-PHP 5.3 uses, require the pseudonamespaced implementation classes in the `ugly/` subdirectory and prefix all class names with `GBPDP_`.
+This package is available in Packagist/Composer as ``gburtini/distributions``. For noncomposer uses, clone the repository and require files directly. 
+
+For deprecated pre-PHP 5.3 uses, require the pseudonamespaced implementation classes in the `ugly/` subdirectory and prefix all class names with `GBPDP_` -- unfortunately, this strategy will be forked in to a branch and abandoned going forward, so only PHP 5.4+ will be supported.
 
 
 Supported Distributions
@@ -82,7 +84,7 @@ Future Work
 
 Pull Requests
 -------------
-I will happily merge any new distributions (ideally with tests, but I'm even happy to write the tests), improvements to my code, etc. Please submit a pull request or send me an email. This branch currently insists on PHP 5.2 compatibility.
+I will happily merge any new distributions (ideally with tests, but I'm even happy to write the tests), improvements to my code, etc. Please submit a pull request or send me an email. 
 
 License
 -------
