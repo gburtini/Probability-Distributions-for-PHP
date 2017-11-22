@@ -7,6 +7,7 @@
             "email": "joe@truephp.com"
         }
     ],
+    "license": "MIT",
     "autoload": {
         "psr-0": {
             "gburtini\\Distributions":        "src"
