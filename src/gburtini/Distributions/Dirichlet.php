@@ -8,4 +8,3 @@
 	namespace gburtini\Distributions;
 	require_once dirname(__FILE__) . "/../../../ugly/Dirichlet.php";
 	class Dirichlet extends GBPDP_Dirchlet {}
-?>
