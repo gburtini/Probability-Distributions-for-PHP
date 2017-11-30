@@ -49,4 +49,3 @@
 			return trim(implode(", ", $ret), ", ");
 		}
 	}
-?>

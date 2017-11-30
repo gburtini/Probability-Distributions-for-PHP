@@ -11,4 +11,3 @@ class GBPDP_Bootstrap {
 		  return $newData;
 	  }  
   }
-?>
