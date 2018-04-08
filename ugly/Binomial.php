@@ -21,6 +21,32 @@ class GBPDP_Binomial extends GBPDP_Distribution {
 		$this->n = $n;
 		$this->p = $p;
 	}
+	
+	/**
+	 * written by: Waqas Tariq Dar : waqastariqdar@gmail.com , waqas.tariq@lums.edu.pk , waqas.tariq@pucit.edu.pk
+	 * This setter function sets the n (number of Observation) parameter for calling object
+	 * @param $n
+	 */
+
+	public function setN($n) {
+		if (!is_int($n) || $n <= 0) {
+			throw new InvalidArgumentException("Parameter (\$n = " . var_export($n, true) . " must be a positive integer. ");
+		}
+		$this->n = $n;
+	}
+
+	/**
+	 * written by: Waqas Tariq Dar : waqastariqdar@gmail.com , waqas.tariq@lums.edu.pk , waqas.tariq@pucit.edu.pk
+	 * This setter function sets the p (probability of success) parameter for calling object
+	 * @param $p
+	 */
+
+	public function setP($p) {
+		if($p < 0 || $p > 1) {
+			throw new InvalidArgumentException("Parameter (\$p = " . var_export($p, true) . " must be between 0 and 1. ");
+		}
+		$this->p = $p;
+	}
 
 	public function mean() { return $this->n * $this->p; }
 	public function variance() { return $this->n * $this->p * (1-$this->p);}

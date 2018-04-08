@@ -14,6 +14,17 @@
 
 			$this->fraction = $fraction;
 		}
+		
+		/**
+		 * written by: Waqas Tariq Dar : waqastariqdar@gmail.com , waqas.tariq@lums.edu.pk , waqas.tariq@pucit.edu.pk
+		 * This setter function sets the fraction parameter for calling object
+		 * @param $fraction
+		 */
+
+		public function setFraction($fraction) {
+			self::validateParameters($fraction);
+			$this->fraction = $fraction;
+		}
 
 		public function mean() { return $this->fraction; }
 		public function variance() { return ($this->fraction) * (1-$this->fraction);}
