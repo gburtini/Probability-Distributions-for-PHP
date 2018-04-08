@@ -3,15 +3,10 @@
 [![Build Status](https://travis-ci.org/gburtini/Probability-Distributions-for-PHP.svg)](https://travis-ci.org/gburtini/Probability-Distributions-for-PHP.svg)
 
 A userland PHP implementation of a number of tools for working with statistical distributions in PHP.
-<<<<<<< HEAD
-
-**Compatibility**: PHP 5.3 and above. Tested on `5.3` through `7.1` as well as `nightly`. We do *not* currently support `hhvm`.
-=======
 
 **Compatibility**: PHP 5.4 and above. Tested and supported on `5.4` through `7.1` as well as `nightly`. We do _not_ currently support `hhvm`.
 
 ## Installation
->>>>>>> 47fa8ae98e50dff2054b2923f591e80b2c4a7d65
 
 This package is available in Packagist/Composer as `gburtini/distributions`. For noncomposer uses, clone the repository and require files directly.
 
