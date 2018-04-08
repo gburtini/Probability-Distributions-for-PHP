@@ -40,7 +40,7 @@ class Normal extends Distribution
         $this->mean = floatval($mean);
         $this->variance = floatval($variance);
         //$this->skewness = floatval($skewness);
-                //$this->kurtosis = floatval($kurtosis);
+        //$this->kurtosis = floatval($kurtosis);
     }
 
     public function rand()

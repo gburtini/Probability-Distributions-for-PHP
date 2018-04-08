@@ -53,12 +53,12 @@ class Poisson extends Distribution
     }
 
     /*
-        * Generate Poisson distrubuted random numbers, using the Knuth-Junhao
-        * algorithm.
-        */
+    * Generate Poisson distrubuted random numbers, using the Knuth-Junhao
+    * algorithm.
+    */
     public static function draw($lambda)
     {
-        $stepSize = 100;
+        $stepSize = 100; // TODO: this is a function of precision
 
         $lambda_left = $lambda;
         $k = 0;

@@ -51,8 +51,8 @@ class Beta extends Distribution
         $x = 0;
         $a = 0;
         $b = 1;
-        $precision = 1e-15; // these two variables can be changed
-        $maxIterations = 100; // and should probably be offered in a more configuration friendly way
+        $precision = $this->targetPrecision;
+        $maxIterations = 100; // this can be changed and should probably be offered in a more configuration friendly way
         $currentIteration = 0;
 
         // limiting the currentIteration to 100 is a bit of a hack. I am not really sold.

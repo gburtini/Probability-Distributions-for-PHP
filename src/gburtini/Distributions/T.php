@@ -105,6 +105,7 @@ class T extends Distribution
 
         $z = BetaFunction::inverseIncompleteBetaFunction(2.0*$p, 0.5*$k, 0.5);
 
+        // TODO: pretty sure this is not sensible (overflows!)
         if ($k > 1e308 * $z) {
             return $sign * INF;
         }
