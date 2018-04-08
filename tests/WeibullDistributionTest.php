@@ -53,10 +53,10 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 
 		$number = array_sum((array) $draws) / count($draws);
 		$mean = $d->mean();
-		$this->assertEquals($number, $mean, "Attempting to draw from Weibull(3.2, 1.4)) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.01);
+		$this->assertEquals($number, $mean, "Attempting to draw from Weibull(3.2, 1.4)) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.015);
 
 		$p = $counter / $scale;
-		$this->assertEquals($p, 1 - $d->cdf($cutoff), "Attempting to draw from  Weibull(3.2, 1.4))  {$scale} times gives the wrong number of values greater than {$cutoff}. This could be just random chance.", 0.001);
+		$this->assertEquals($p, 1 - $d->cdf($cutoff), "Attempting to draw from  Weibull(3.2, 1.4))  {$scale} times gives the wrong number of values greater than {$cutoff}. This could be just random chance.", 0.015);
 	}
 
 	public function testWeibullPDF() {
