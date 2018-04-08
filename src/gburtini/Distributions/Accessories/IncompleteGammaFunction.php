@@ -97,14 +97,14 @@ class IncompleteGammaFunction
     public static $big = 4.503599627370496e15;
     public static $biginv = 2.22044604925031308085e-16;
 
-    public static function ComplementedIncompleteGamma($a, $x)
+    public static function complementedIncompleteGamma($a, $x)
     {
         if (($x < 0) || ($a <= 0)) {
             throw new \InvalidArgumentException("Incomplete gamma function only implemented for positive values.");
         }
 
         if (($x < 1.0) || ($x < $a)) {
-            return (1.0 - static::IncompleteGamma($a, $x));
+            return (1.0 - static::incompleteGamma($a, $x));
         }
 
         $ax = $a * log($x) - $x - GammaFunction::logGammaFunction($a);
@@ -169,7 +169,7 @@ class IncompleteGammaFunction
     *
     */
 
-    public static function IncompleteGamma($a, $x)
+    public static function incompleteGamma($a, $x)
     {
         /* Check zero integration limit first */
         if ($x == 0) {
@@ -181,7 +181,7 @@ class IncompleteGammaFunction
         }
 
         if (($x > 1.0) && ($x > $a)) {
-            return (1.0 - static::ComplementedIncompleteGamma($a, $x));
+            return (1.0 - static::complementedIncompleteGamma($a, $x));
         }
 
         /* Compute  x**a * exp(-x) / Gamma(a)  */
@@ -259,7 +259,7 @@ class IncompleteGammaFunction
     */
 
 
-    public static function InverseComplementedIncompleteGamma($a, $y0)
+    public static function inverseComplementedIncompleteGamma($a, $y0)
     {
 
         /* bound the solution */
@@ -284,7 +284,7 @@ class IncompleteGammaFunction
         /* approximation to inverse function */
         $d = 1.0 / (9.0 * $a);
 
-        $y = (1.0 - $d - static::InverseNormal($y0) * sqrt($d));
+        $y = (1.0 - $d - static::inverseNormal($y0) * sqrt($d));
 
         $x = $a * $y * $y * $y;
 
@@ -294,7 +294,7 @@ class IncompleteGammaFunction
             if ($x > $x0 || $x < $x1) {
                 break;
             }
-            $y = static::ComplementedIncompleteGamma($a, $x);
+            $y = static::complementedIncompleteGamma($a, $x);
             if ($y < $yl || $y > $yh) {
                 break;
             }
@@ -332,7 +332,7 @@ class IncompleteGammaFunction
             }
             while (is_infinite($x0)) {
                 $x = (1.0 + $d) * $x;
-                $y = static::ComplementedIncompleteGamma($a, $x);
+                $y = static::complementedIncompleteGamma($a, $x);
                 if ($y < $y0) {
                     $x0 = $x;
                     $yl = $y;
@@ -350,7 +350,7 @@ class IncompleteGammaFunction
 
         for ($i = 0; $i < 400; $i++) {
             $x = $x1 + $d * ($x0 - $x1);
-            $y = static::ComplementedIncompleteGamma($a, $x);
+            $y = static::complementedIncompleteGamma($a, $x);
             $lgm = ($x0 - $x1) / ($x1 + $x0);
 
             if (abs($lgm) < $dithresh) {
@@ -533,9 +533,11 @@ class IncompleteGammaFunction
         3.28014464682127739104E-4,
         2.89247864745380683936E-6,
         6.79019408009981274425E-9,
-    );
+        );
+        
 
-    public static function InverseNormal($y0)
+    // TODO: does this belong in this file?
+    public static function inverseNormal($y0)
     {
         if ($y0 <= 0.0) {
             return -INF;
@@ -545,7 +547,8 @@ class IncompleteGammaFunction
         }
         $code = 1;
         $y = $y0;
-        if ($y > (1.0 - 0.13533528323661269189)) {	/* 0.135... = exp(-2) */
+        if ($y > (1.0 - 0.13533528323661269189)) {
+            /* 0.135... = exp(-2) */
             $y = 1.0 - $y;
             $code = 0;
         }
@@ -580,6 +583,7 @@ class IncompleteGammaFunction
     private static function polevl($x, array $coeffs)
     {
         $ans = 0.0;
+                
         foreach ($coeffs as $a) {
             $ans = $ans * $x + $a;
         }

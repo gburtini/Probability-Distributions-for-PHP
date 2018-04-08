@@ -2,7 +2,7 @@
 /*
     * Probability Distributions for PHP - Binomial Distribution
     *
-    * Copyright (C) 2015 Giuseppe Burtini <joe@iterative.ca>.
+    * Copyright (C) 2015-2018 Giuseppe Burtini.
     */
 namespace gburtini\Distributions;
 
@@ -23,7 +23,7 @@ class Bernoulli extends Distribution
     }
     public function variance()
     {
-        return ($this->fraction) * (1-$this->fraction);
+        return ($this->fraction) * (1 - $this->fraction);
     }
     public function sd()
     {
@@ -54,9 +54,9 @@ class Bernoulli extends Distribution
     public function pdf($k)
     {
         if ($k == 0) {
-            return 1-$this->fraction;
+            return 1 - $this->fraction;
         }
-        if ($k == 0) {
+        if ($k == 1) {
             return $this->fraction;
         }
 
@@ -69,7 +69,7 @@ class Bernoulli extends Distribution
             return 0.0;
         }
         if ($k < 1) {
-            return 1-$this->fraction;
+            return 1 - $this->fraction;
         }
         return 1.0;
     }

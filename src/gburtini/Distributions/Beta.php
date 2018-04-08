@@ -16,7 +16,7 @@
     * $beta::quantile($y in [0,1]) = [0,1] (aliased Beta::icdf)
     * $beta->rand() = [0,1]
     *
-    * Copyright (C) 2015 Giuseppe Burtini <joe@iterative.ca>.
+    * Copyright (C) 2015-2018 Giuseppe Burtini
     *
     * Other Credits
     * -------------
@@ -52,11 +52,11 @@ class Beta extends Distribution
         $a = 0;
         $b = 1;
         $precision = 1e-15; // these two variables can be changed
-        $maxiters = 100; // and should probably be offered in a more configuration friendly way
-        $iter_num = 0;
+        $maxIterations = 100; // and should probably be offered in a more configuration friendly way
+        $currentIteration = 0;
 
-        // limiting the iter_num to 100 is a bit of a hack. I am not really sold.
-        while ((($b - $a) > $precision) && ($iter_num < $maxiters)) {
+        // limiting the currentIteration to 100 is a bit of a hack. I am not really sold.
+        while ((($b - $a) > $precision) && ($currentIteration < $maxIterations)) {
             $x = ($a + $b) / 2;
 
             if (BetaFunction::incompleteBetaFunction($x, $this->alpha, $this->beta) > $p) {
@@ -64,7 +64,7 @@ class Beta extends Distribution
             } else {
                 $a = $x;
             }
-            $iter_num = $iter_num + 1;
+            $currentIteration = $currentIteration + 1;
         }
 
         return $x;

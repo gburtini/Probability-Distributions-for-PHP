@@ -1,12 +1,11 @@
 <?php
 namespace gburtini\Distributions\Accessories;
 
-// these accesory functions are "necessary" to compute many beta distribution statistics, but we don't actually use them (here, they are used in the T distribution calculations currently) because the Gamma shortcut calculator is faster.
 class BetaFunction
 {
     public static function betaFunction($x, $y)
     {
-        return exp(GammaFunction::logGammaFunction($x) + GammaFunction::logGammaFunction($y) - GammaFunction::logGammaFunction($x+$y));
+        return exp(GammaFunction::logGammaFunction($x) + GammaFunction::logGammaFunction($y) - GammaFunction::logGammaFunction($x + $y));
     }
 
     public static function inverseIncompleteBetaFunction($p, $a, $b)
@@ -93,18 +92,7 @@ class BetaFunction
         $maxit = 100;
         $eps = 3e-16;
         $fpmin = 1e-30;
-        /*
-                // mentioning these causes E_NOTICEs in HipHop.
-                $aa;
-                $c;
-                $d;
-                $del;
-                $h;
-                $qab;
-                $qam;
-                $qap;
-        */
-
+        
         $qab = $a + $b;
         $qap = $a + 1;
         $qam = $a - 1;
@@ -119,8 +107,6 @@ class BetaFunction
         $d = 1.0/$d;
 
         $h = $d;
-
-        //$m2;
 
         for ($m = 1; $m < $maxit; $m++) {
             $m2 = 2*$m;

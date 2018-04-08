@@ -14,7 +14,7 @@
  * $poisson::quantile($y in [0,1]) = [0,1] (aliased Poisson::icdf)
  * $poisson->rand() = [0,1]
  *
- * Copyright (C) 2015 Giuseppe Burtini <joe@iterative.ca>.
+ * Copyright (C) 2015-2018 Giuseppe Burtini.
  *
  * Other Credits
  * -------------
@@ -32,7 +32,6 @@ class Poisson extends Distribution
     public function __construct($lambda)
     {
         self::validateParameters($lambda);
-
         $this->lambda = $lambda;
     }
 
@@ -56,10 +55,10 @@ class Poisson extends Distribution
     /*
         * Generate Poisson distrubuted random numbers, using the Knuth-Junhao
         * algorithm.
-            */
+        */
     public static function draw($lambda)
     {
-        $STEP = 100;
+        $stepSize = 100;
 
         $lambda_left = $lambda;
         $k = 0;
@@ -71,9 +70,9 @@ class Poisson extends Distribution
             $p = $p * $u;
 
             if ($p < M_E && $lambda_left > 0) {
-                if ($lambda_left > $STEP) {
-                    $p = $p * exp($STEP);
-                    $lambda_left = $lambda_left - $STEP;
+                if ($lambda_left > $stepSize) {
+                    $p = $p * exp($stepSize);
+                    $lambda_left = $lambda_left - $stepSize;
                 } else {
                     $p = $p * exp($lambda_left);
                     $lambda_left = -1;
@@ -81,7 +80,7 @@ class Poisson extends Distribution
             }
         } while ($p > 1);
 
-        return $k-1;
+        return $k - 1;
     }
 
     public static function validateParameters($lambda)

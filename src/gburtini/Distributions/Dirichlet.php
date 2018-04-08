@@ -1,13 +1,10 @@
 <?php
-    /*
-     * Statistical Distributions for PHP - Dirchlet Distribution
-     *
-     * Copyright (C) 2015 Giuseppe Burtini <joe@iterative.ca>.
-     */
-    namespace gburtini\Distributions;
-
-require_once dirname(__FILE__) . "/Distribution.php";
-require_once dirname(__FILE__) . "/Gamma.php";
+/*
+* Statistical Distributions for PHP - Dirchlet Distribution
+*
+* Copyright (C) 2015-2018 Giuseppe Burtini.
+*/
+namespace gburtini\Distributions;
 
 class Dirichlet extends Distribution
 {
@@ -42,9 +39,9 @@ class Dirichlet extends Distribution
         $sum = array_sum($draws);
 
         return array_map(
-                        function ($draws) use ($sum) {
-                            return $draws / $sum;
-                        },
+            function ($draws) use ($sum) {
+                return $draws / $sum;
+            },
             $draws,
             array_fill(0, count($draws), $sum)
         );

@@ -4,7 +4,7 @@
 *
 * This gamma implementation requires that $alpha (aka shape) is greater than 0, rather than some old definitions that require it to be > -1.
 *
-* Copyright (C) 2015 Giuseppe Burtini <joe@iterative.ca>.
+* Copyright (C) 2015-2018 Giuseppe Burtini
 *
 * Other Credits
 * -------------
@@ -15,8 +15,6 @@
 */
 
 namespace gburtini\Distributions;
-
-require_once dirname(__FILE__) . "/Distribution.php";
 
 class Gamma extends Distribution
 {

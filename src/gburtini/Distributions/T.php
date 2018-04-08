@@ -2,7 +2,7 @@
 /*
 * Probability Distributions for PHP - T Distribution
 *
-* Copyright (C) 2015 Giuseppe Burtini <joe@iterative.ca> except where otherwise noted.
+* Copyright (C) 2015-2018 Giuseppe Burtini except where otherwise noted.
 *
 * Other Credits
 * -------------
@@ -21,7 +21,7 @@ class T extends Distribution
         static::validateParameters($dof);
 
         $this->degrees = floatval($dof); // float, not integer: http://stats.stackexchange.com/questions/116511/explanation-for-non-integer-degrees-of-freedom-in-t-test-with-unequal-variances
-            // TODO: some overflow problems to be dealt with here (large DOF)
+        // TODO: some overflow problems to be dealt with here (large DOF)
     }
 
     public static function validateParameters($dof)
@@ -57,9 +57,6 @@ class T extends Distribution
 
     public function cdf($x)
     {
-
-            /* Special cases */
-
         if ($this->degrees == 1.0) {
             return 0.5 + M_1_PI * atan($x);
         }
@@ -68,7 +65,7 @@ class T extends Distribution
             return 0.5 * (1.0 + $x / sqrt(2.0 + $x*$x));
         }
 
-        /* General case, using the incomplte Beta function */
+        /* General case, using the incomplete Beta function */
 
         $halfDegrees = $this->degrees/2;
         return BetaFunction::incompleteBetaFunction(($x + sqrt($x*$x + $this->degrees)) / (2 * sqrt($x*$x + $this->degrees)), $halfDegrees, $halfDegrees);
@@ -76,11 +73,7 @@ class T extends Distribution
 
     public function icdf($p)
     {
-
-            /* Special cases */
-
-        /* Reimplemented using the algorithm from the Cephes library */
-        /* Same basic idea, but better numerical stability */
+        /* Reimplemented using the algorithm from the Cephes library; same basic idea, but better numerical stability */
 
         if ($p < 0 || $p > 1) {
             throw new \InvalidArgumentException("Parameter (\$p = " . var_export($p, true) . " must be between 0 and 1. ");
@@ -106,7 +99,7 @@ class T extends Distribution
         $sign = -1;
 
         if ($p >= 0.5) {
-            $p = 1-$p;
+            $p = 1 - $p;
             $sign = 1;
         }
 

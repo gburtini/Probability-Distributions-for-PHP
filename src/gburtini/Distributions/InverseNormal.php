@@ -17,7 +17,7 @@ class InverseNormal extends Distribution
         $v = $norm->draw(0, 1);
         $y = pow($v, 2);
         $x = $mu + (pow($mu, 2) * $y) / (2 * $lambda) - ($mu / (2 * $lambda)) * sqrt((4 * $mu * $lambda * $y) + (pow($mu, 2) * pow($y, 2)));
-        $z = mt_rand()/mt_getrandmax();
+        $z = mt_rand() / mt_getrandmax();
         if ($z <= ($mu / ($mu + $x))) {
             return $x;
         } else {

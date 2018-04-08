@@ -2,7 +2,7 @@
 /*
 * Probability Distributions for PHP - Binomial Distribution
 *
-* Copyright (C) 2015 Giuseppe Burtini <joe@iterative.ca>.
+* Copyright (C) 2015-2018 Giuseppe Burtini.
 *
 * Other credits
 * Original implementation by Frank Wikström.
@@ -77,12 +77,12 @@ class Binomial extends Distribution
     /* Could be improved with the implementation of the incomplete beta funciton */
     public function cdf($k)
     {
-        $accumuluated = 0.0;
+        $accumulator = 0.0;
 
         for ($i=0; $i<=$k; $i++) {
-            $accumuluated += $this->pdf($i);
+            $accumulator += $this->pdf($i);
         }
-        return $accumuluated;
+        return $accumulator;
     }
 
     /** Again, not a very efficient implementation */
@@ -94,12 +94,12 @@ class Binomial extends Distribution
         if ($p == 1) {
             return INF;
         }
-        $accumuluated = 0.0;
+        $accumulator = 0.0;
         $k = 0;
         do {
             $delta = $this->pdf($k);
-            $accumuluated = $accumuluated + $delta;
-            if ($accumuluated >= $p) {
+            $accumulator = $accumulator + $delta;
+            if ($accumulator >= $p) {
                 return $k;
             }
             $k = $k + 1;

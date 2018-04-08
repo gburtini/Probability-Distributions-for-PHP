@@ -1,5 +1,5 @@
 <?php
-    namespace gburtini\Distributions;
+namespace gburtini\Distributions;
 
 abstract class Distribution
 {
