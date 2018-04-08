@@ -1,5 +1,17 @@
 <?php
-	namespace gburtini\Distributions;
-	require_once dirname(__FILE__) . "/../../../ugly/Bootstrap.php";
-	class Bootstrap extends \GBPDP_Bootstrap {}
-?>
+namespace gburtini\Distributions;
+
+class Bootstrap
+{
+    // TODO: this file is completely unfinished: consider implementing this as a Distribution itself with all the associated methods.
+    public static function resampleWithReplacement($data, $n)
+    {
+        $newData = new \SplFixedArray($n);
+        $originalLength = count($data);
+        for ($i = 0; $i < $n; $i++) {
+            $k = rand(0, $originalLength);
+            $newData[$i] = $data[$k];
+        }
+        return $newData;
+    }
+}
