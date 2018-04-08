@@ -5,31 +5,31 @@ use gburtini\Distributions\Weibull;
 
 class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 {
-	public function test_Weibull_InstantiateDistribution() {
+	public function testWeibullInstantiateDistribution() {
 		$distribution1 = new Weibull(2.0, 3.1);
 	}
 
-	public function test_Weibull_InvalidInstantiation() {
+	public function testWeibullInvalidInstantiation() {
 		$this->setExpectedException('InvalidArgumentException');
 		$invalid = new Weibull(0, 1);
 	}
 
-	public function test_Weibull_InvalidInstantiation2() {
+	public function testWeibullInvalidInstantiation2() {
 		$this->setExpectedException('InvalidArgumentException');
 		$invalid = new Weibull(1, 0);
 	}
 
-	public function test_Weibull_InvalidInstantiation3() {
+	public function testWeibullInvalidInstantiation3() {
 		$this->setExpectedException('InvalidArgumentException');
 		$invalid = new Weibull(1, -1);
 	}
 
-	public function test_Weibull_InvalidInstantiation4() {
+	public function testWeibullInvalidInstantiation4() {
 		$this->setExpectedException('InvalidArgumentException');
 		$invalid = new Weibull(-1, 1);
 	}
 
-	public function test_Weibull_InvalidInstantiation5() {
+	public function testWeibullInvalidInstantiation5() {
 		$this->setExpectedException('InvalidArgumentException');
 		$invalid = new Weibull("a", 2);
 	}
@@ -53,15 +53,13 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 
 		$number = array_sum((array) $draws) / count($draws);
 		$mean = $d->mean();
-		$this->assertEquals($number, $mean, "Attempting to draw from Weibull(3.2, 1.4)) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.001);
+		$this->assertEquals($number, $mean, "Attempting to draw from Weibull(3.2, 1.4)) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.01);
 
 		$p = $counter / $scale;
 		$this->assertEquals($p, 1 - $d->cdf($cutoff), "Attempting to draw from  Weibull(3.2, 1.4))  {$scale} times gives the wrong number of values greater than {$cutoff}. This could be just random chance.", 0.001);
 	}
 
-
-
-	public function test_Weibull_PDF() {
+	public function testWeibullPDF() {
 		$accuracy = 1e-10;
 
 		$d = new Weibull(3.2, 1.4);
@@ -86,7 +84,7 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 	}
 
 
-	public function test_Weibull_CDF() {
+	public function testWeibullCDF() {
 		$accuracy = 1e-10;
 
 		$d = new Weibull(3.2, 1.4);
@@ -111,7 +109,7 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 	}
 
 
-	public function test_Weibull_ICDF() {
+	public function testWeibullICDF() {
 
 		$accuracy = 1e-10;
 
@@ -137,27 +135,27 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 	}
 
 
-	public function test_Weibull_mean() {
+	public function testWeibullMean() {
 		$accuracy = 1e-10;
 
 		$d = new Weibull(3.2, 1.4);
-		$this->assertEquals(1.253915138, $d->mean(), "mean incorrect", $accuracy);
+		$this->assertEquals(1.253915138, $d->mean(), "Mean incorrect", $accuracy);
 
 		$d = new Weibull(0.2, 3.0);
-		$this->assertEquals(360, $d->mean(), "mean incorrect", $accuracy);
+		$this->assertEquals(360, $d->mean(), "Mean incorrect", $accuracy);
 	}
 
-	public function test_Weibull_variance() {
+	public function testWeibullVariance() {
 		$accuracy = 1e-10;
 
 		$d = new Weibull(3.2, 1.4);
-		$this->assertEquals(0.1849824157, $d->variance(), "variance incorrect", $accuracy);
+		$this->assertEquals(0.1849824157, $d->variance(), "Variance incorrect", $accuracy);
 
 		$d = new Weibull(0.2, 3.0);
-		$this->assertEquals(3.25296000000e7, $d->variance(), "variance incorrect", 1e-6);
+		$this->assertEquals(3.25296000000e7, $d->variance(), "Variance incorrect", 1e-6);
 	}
 
-	public function test_Weibull_CDF_ICDF() {
+	public function testWeibullCDFICDF() {
 		$accuracy = 1e-8;
 
 		for($i = 0; $i < 100; $i++) {
