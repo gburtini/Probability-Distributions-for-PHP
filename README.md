@@ -10,8 +10,6 @@ A userland PHP implementation of a number of tools for working with statistical 
 
 This package is available in Packagist/Composer as `gburtini/distributions`. For noncomposer uses, clone the repository and require files directly.
 
-For deprecated pre-PHP 5.3 uses, require the pseudonamespaced implementation classes in the `ugly/` subdirectory and prefix all class names with `GBPDP_` -- unfortunately, this strategy will be forked in to a branch and abandoned going forward, so only PHP 5.4+ will be supported.
-
 ## Supported Distributions
 
 The name given here is the name of the class.
