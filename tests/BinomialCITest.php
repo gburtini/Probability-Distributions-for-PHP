@@ -11,7 +11,6 @@ class BinomialCITest extends PHPUnit_Framework_TestCase
         $distribution1 = new BinomialCI(6, 0.4);
     }
 
-
     public function testBinomialInvalidInstantiation()
     {
         $this->setExpectedException('InvalidArgumentException');

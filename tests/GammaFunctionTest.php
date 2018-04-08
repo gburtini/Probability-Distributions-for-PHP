@@ -6,8 +6,6 @@ class GammaFunctionTest extends PHPUnit_Framework_TestCase
     // NOTE: this uses the log stirling/lanczos implementations depending on whether $a is above 171 or not (accuracy threshold)
     public function testLogGammaFunction()
     {
-        // $a
-
         // important to test non-integer calls to gamma on both sides (these may fall back to loopFactorial otherwise).
 
         $precision = 0.001;
@@ -26,7 +24,6 @@ class GammaFunctionTest extends PHPUnit_Framework_TestCase
 
     public function testLogStirlingApproximation()
     {
-        // $x
         // NOTE: this is only actually used above 171, so it doesn't need to be accurate below that. It is though.
 
         $precision = 0.001;
@@ -42,7 +39,6 @@ class GammaFunctionTest extends PHPUnit_Framework_TestCase
 
     public function testLanczosApproximation()
     {
-        // $x
         // this requires computing a massive number and then taking the log of it. Eventually, it starts returning INF, so we shouldn't expect it to work at that point. It is also not very precise.
         $precision = 0.01;
         $this->assertEquals(39.339, log(GammaFunction::LanczosApproximation(20)), "Expecting Lanczos to work around 20", $precision);

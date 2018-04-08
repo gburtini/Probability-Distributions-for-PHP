@@ -1,5 +1,5 @@
 <?php
-    use gburtini\Distributions\Normal;
+use gburtini\Distributions\Normal;
 
 class NormalDistributionTest extends PHPUnit_Framework_TestCase
 {

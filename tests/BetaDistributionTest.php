@@ -7,7 +7,7 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
 {
     public function testBetaInstantiateDistribution()
     {
-        $jeffreys = new Beta(0.5, 0.5);	// corresponds to a binomial.
+        $jeffreys = new Beta(0.5, 0.5); // corresponds to a binomial.
         $bayes = new Beta(1, 1);
     }
 
@@ -15,7 +15,7 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
     public function testBetaInvalidInstantiation()
     {
         $this->setExpectedException('InvalidArgumentException');
-        $haldanes = new Beta(0, 0);	// 0, 0 is not a valid beta distribution (it has two inf singularities)
+        $haldanes = new Beta(0, 0); // 0, 0 is not a valid beta distribution (it has two inf singularities)
     }
 
 
@@ -34,7 +34,7 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
 
     public function testObjectDraw()
     {
-        srand(1);	// fix the random key, just for consistency.
+        srand(1); // fix the random key, just for consistency.
 
         $d = new Beta(0.5, 0.5);
         
@@ -50,7 +50,7 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
 
     public function testStrongEdgeCase()
     {
-        srand(1);	// fix the random key, just for consistency.
+        srand(1); // fix the random key, just for consistency.
 
         $d = new Beta(1, 10000);
         

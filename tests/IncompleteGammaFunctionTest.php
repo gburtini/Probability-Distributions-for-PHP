@@ -75,7 +75,6 @@ class IncompleteGammaFunctionTest extends PHPUnit_Framework_TestCase
             array( 'x'  =>  3.53372688165 , 'a'  =>  4.64617055529 , 'gamma'  =>  0.657484239452 , ),
             array( 'x'  =>  2.7522918734 , 'a'  =>  2.51145796177 , 'gamma'  =>  0.360258797973 , ),
             array( 'x'  =>  1.604625837 , 'a'  =>  0.274489082575 , 'gamma'  =>  0.0326841393723 , ),
-
         );
 
         foreach ($testCases as $test) {
