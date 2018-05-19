@@ -71,6 +71,15 @@ class NormalDistributionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($d->pdf(-0.5), 0.3520653267, "PDF incorrect", 1e-9);
         $this->assertEquals($d->pdf(1.5), 0.1295175956, "PDF incorrect", 1e-9);
         $this->assertEquals($d->pdf(3.5), 0.0008726826947, "PDF incorrect", 1e-9);
+
+        $d = new Normal(0, 0.2);
+
+        $this->assertEquals(6.4119473711506E-28, $d->pdf(-5), "PDF incorrect", 1e-9);
+        $this->assertEquals(1.460642012962E-7, $d->pdf(-2.5), "PDF incorrect", 1e-9);
+        $this->assertEquals(0.89206205807639, $d->pdf(0), "PDF incorrect", 1e-9);
+        $this->assertEquals(0.47748641153356, $d->pdf(-0.5), "PDF incorrect", 1e-9);
+        $this->assertEquals(0.0032172781336966, $d->pdf(1.5), "PDF incorrect", 1e-9);
+        $this->assertEquals(4.4681378118755E-14, $d->pdf(3.5), "PDF incorrect", 1e-9);
     }
 
     public function testNormalCDF()
