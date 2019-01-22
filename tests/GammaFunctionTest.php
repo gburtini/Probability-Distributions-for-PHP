@@ -46,6 +46,13 @@ class GammaFunctionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1.20097, log(GammaFunction::LanczosApproximation(3.5)), "Decimal approximations are different than expected w/ Lanczos.", $precision);
     }
 
+    public function testValidateParametesr()
+    {
+        $g = new \gburtini\Distributions\Gamma(1,2);
+        $this->setExpectedException('InvalidArgumentException');
+        $g::validateParameters(-1,0);
+    }
+
     public function testLoopFactorial()
     {
         // $num

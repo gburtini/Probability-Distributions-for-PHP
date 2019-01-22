@@ -68,7 +68,7 @@ class Gamma extends Distribution
             return -log($u) * $beta;
         } else { // 0 < alpha < 1
             // Uses ALGORITHM GS of Statistical Computing - Kennedy & Gentle
-            while (true) {
+            do {
                 $u3 = rand()/getrandmax();
                 $b = (M_E + $alpha)/M_E;
                 $p = $b*$u3;
@@ -85,7 +85,7 @@ class Gamma extends Distribution
                 } elseif ($u4 <= exp(-$x)) {
                     break;
                 }
-            }
+            } while (true);
             return $x * $beta;
         }
     }

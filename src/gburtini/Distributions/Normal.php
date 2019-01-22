@@ -120,8 +120,9 @@ class Normal extends Distribution
             $x = -((((($c[1] * $q + $c[2]) * $q + $c[3]) * $q + $c[4]) * $q +
                 $c[5]) * $q + $c[6]) / (((($d[1] * $q + $d[2]) * $q + $d[3]) *
                 $q + $d[4]) * $q + 1);
+        } else if($p === 1) {
+            return INF;
         } else {
-            // TODO: is there some fall back estimation we could do?
             throw new \InvalidArgumentException("Could not estimate ICDF, p={$p} is outside safe estimation region.");
         }
 
@@ -130,13 +131,15 @@ class Normal extends Distribution
     }
 
     // TODO: Ziggurat algorithm to draw values: https://en.wikipedia.org/wiki/Ziggurat_algorithm
-    public static function boxMuller()
-    {
+    /**
+     * @return double
+     */
+    public static function boxMuller() {
         // Box-Muller transform (Box, Muller 1958).
         $u = mt_rand()/mt_getrandmax();
         $v = mt_rand()/mt_getrandmax();
 
-        return sqrt(-2 * log($u)) * cos(2 * M_PI * $v);
+        return (double) sqrt(-2 * log($u)) * cos(2 * M_PI * $v);
     }
 
     public static function validateParameters($m, $v, $s, $k)

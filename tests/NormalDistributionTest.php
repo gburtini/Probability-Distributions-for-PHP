@@ -133,4 +133,35 @@ class NormalDistributionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($d->icdf(0.9999), $mu + $sigma * 3.71901648545454, "Inverse CDF incorrect", 1e-7);
         $this->assertEquals($d->icdf(0.999999), $mu + $sigma * 4.75342430881908, "Inverse CDF incorrect", 1e-7);
     }
+
+    public function testMeanAndVariance() {
+        $d = new Normal(8, 0.1);
+        $this->assertEquals(8, $d->mean());
+        $this->assertEquals(0.1, $d->variance());
+    }
+
+    public function testRationalApproximation() {
+        $d = new Normal(8, 0.1);
+        $this->assertEquals(7.2643442088140445358, $d->icdf(0.01),"Inverse CDF incorrect", 1e-9);
+    }
+
+    public function testInfICDF() {
+        $d = new Normal(8, 0.1);
+        $this->assertEquals(INF, $d->icdf(1));
+    }
+
+    public function testOutOfRangeICDF() {
+        $d = new Normal(8, 0.1);
+        $this->setExpectedException('InvalidArgumentException');
+        $d->icdf(2);
+    }
+
+    public function testBoxMuller() {
+        $this->assertInternalType('double', Normal::boxMuller());
+    }
+
+    public function testInvalidParameters() {
+        $this->setExpectedException('InvalidArgumentException');
+        $invalid = Normal::validateParameters("x",1,1,1);
+    }
 }
