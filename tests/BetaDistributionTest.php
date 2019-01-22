@@ -83,4 +83,26 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(0.6742, $d->icdf(0.5), "Inverse CDF incorrect", 0.01);
         $this->assertEquals(0.8981, $d->icdf(0.99), "Inverse CDF incorrect", 0.01);
     }
+
+    public function testBetaPDFAndCDF()
+    {
+        /**
+         * array of arrays with a,b,x,test,value
+         */
+        $params = [
+          [0.5,1.5,0.5,"pdf",0.63662],
+          [2.0,1.5,0.5,"pdf",1.32583],
+          [4.0,1.5,0.5,"pdf",0.870073],
+          [0.5,1.5,0.5,"cdf",0.81831],
+          [2.0,1.5,0.5,"cdf",0.381282],
+          [4.0,1.5,0.5,"cdf",0.118879],
+        ];
+
+
+        foreach ($params as $param) {
+            $d = new Beta($param[0], $param[1]);
+            $this->assertEquals($d->{$param[3]}($param[2]), $param[4],  strtoupper($param[3])." incorrect", 1e-6);
+        }
+
+    }
 }

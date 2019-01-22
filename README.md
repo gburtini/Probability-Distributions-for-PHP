@@ -80,6 +80,16 @@ There is a [Statistics Functions package](http://php.net/manual/en/ref.stats.php
 
 I will happily merge any new distributions (ideally with tests, but I'm even happy to write the tests), improvements to my code, etc. Please submit a pull request or send me an email.
 
+## Contributions
+
+Fork repository, clone to your own computer and install dependencies:
+
+    composer install
+    
+Run tests
+
+    ./vendor/bin/phpunit
+
 ## License
 
 [MIT licensed](https://tldrlegal.com/license/mit-license). Please contact me if this does not work for your use-case.
