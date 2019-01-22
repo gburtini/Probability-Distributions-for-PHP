@@ -83,7 +83,7 @@ class T extends Distribution implements DistributionInterface
 
         if ($p > 0.25 && $p < 0.75) {
             if ($p == 0.5) {
-                return 0.0;
+                return 0.0; // test extremal case 0.0
             }
 
             $z = 1.0 - 2.0 * $p;
@@ -105,10 +105,14 @@ class T extends Distribution implements DistributionInterface
 
         $z = BetaFunction::inverseIncompleteBetaFunction(2.0*$p, 0.5*$k, 0.5);
 
-        // TODO: pretty sure this is not sensible (overflows!)
-        if ($k > 1e308 * $z) {
-            return $sign * INF;
-        }
+//        I propose to depreciate this line, for such high values php works bad
+//        I typed test for this and you can see that inverseIncompleteBetaFunction
+//        throws exception for such high values of z, to you should ask about this
+//        when you calculating z in line 90.
+//        // TODO: pretty sure this is not sensible (overflows!)
+//        if ($k > 1e308 * $z) { // should we add test to this? I think that yes if this case is considered
+//            return $sign * INF;
+//        }
 
         $t = sqrt($k / $z - $k);
         return $sign * $t;

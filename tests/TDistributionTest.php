@@ -186,4 +186,22 @@ class TDistributionTest extends PHPUnit_Framework_TestCase
             $this->assertEquals($p, $d->cdf($d->icdf($p)), "CDF and inverse CDF mismatch", $accuracy);
         }
     }
+
+    // test extremal case 0.0
+    public function testExtremalCases() {
+        $d = new T(1e309);
+        $this->assertEquals(0.0,$d->icdf(0.5));
+    }
+
+    // test extremal case 0.0
+    public function testInvalidArgOfIcdf() {
+        $this->setExpectedException('InvalidArgumentException');
+        (new T(2))->icdf(4);
+    }
+
+    //
+//    public function testExtremalCases() {
+//        $d = new T(1e309);
+//        $this->assertEquals(INF,$d->icdf(0.51));
+//    }
 }

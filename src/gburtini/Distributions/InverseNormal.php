@@ -28,6 +28,10 @@ class InverseNormal extends Distribution implements DistributionInterface
         $this->lambda = $scale;
     }
 
+    public function rand() {
+        return self::draw($this->mu, $this->lambda);
+    }
+
     public static function draw($mu, $lambda)
     {
         $norm = new Normal(0, 1);

@@ -69,7 +69,7 @@ class Dirichlet extends Distribution implements DistributionInterface
         if(!is_array($x) || count($x) !== count($this->alpha) - 1) {
             throw new \InvalidArgumentException("We considering symmetric DirichletDistribution, so you should paste K-1 arguments there, where K = count(alpha)");
         }
-        
+
         // calculating helping variables
         $K = count($this->alpha); // dimension
         $sumX = array_sum($x); // sum of x

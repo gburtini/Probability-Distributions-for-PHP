@@ -10,10 +10,10 @@ abstract class Distribution
 //        throw new \BadMethodCallException("PDF not implemented. Please create a pull request if you implement it yourself.");
 //    }
 
-    public function pmf($x) // alias for pdf
-    {
-        return $this->pdf($x);
-    }
+//    public function pmf($x) // alias for pdf
+//    {
+//        return $this->pdf($x);
+//    }
 
     public function cdf($x)
     {
@@ -31,9 +31,9 @@ abstract class Distribution
     }
 
     // this cannot be defined in the abstract class as it violates strict standards (we always have parameters here, but they're unknown)
-    //public static function draw() {
-    //	throw new \BadMethodCallException("Static version of random draw not implemented. Please create a pull request if you implement it yourself.");
-    //}
+//    public static function draw() {
+//    	throw new \BadMethodCallException("Static version of random draw not implemented. Please create a pull request if you implement it yourself.");
+//    }
 
     public function rands($n)
     {
