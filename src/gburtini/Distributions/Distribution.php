@@ -10,7 +10,7 @@ abstract class Distribution
         throw new \BadMethodCallException("PDF not implemented. Please create a pull request if you implement it yourself.");
     }
 
-    public function pmf($x)
+    public function pmf($x) // alias for pdf
     {
         return $this->pdf($x);
     }

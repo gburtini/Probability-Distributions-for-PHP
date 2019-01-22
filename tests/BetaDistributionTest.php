@@ -37,14 +37,14 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
         srand(1); // fix the random key, just for consistency.
 
         $d = new Beta(0.5, 0.5);
-        
+
         $scale = 5000;
         $draws = new SplFixedArray($scale);
         for ($i = 0; $i < $scale; $i++) {
             $draws[$i] = $d->rand();
         }
 
-        $number = array_sum((array) $draws) / count($draws);
+        $number = array_sum((array)$draws) / count($draws);
         $this->assertEquals(0.5, $number, "Attempting to draw from B(0.5, 0.5) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.01);
     }
 
@@ -53,15 +53,15 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
         srand(1); // fix the random key, just for consistency.
 
         $d = new Beta(1, 10000);
-        
+
         $scale = 1000;
         $draws = new SplFixedArray($scale);
         for ($i = 0; $i < $scale; $i++) {
             $draws[$i] = $d->rand();
         }
 
-        $number = array_sum((array) $draws) / count($draws);
-        $this->assertEquals(1/10001, $number, "Attempting to draw from B(1, 10000) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.01);
+        $number = array_sum((array)$draws) / count($draws);
+        $this->assertEquals(1 / 10001, $number, "Attempting to draw from B(1, 10000) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.01);
     }
 
     public function testClassDraw()
@@ -72,7 +72,7 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
         for ($i = 0; $i < $scale; $i++) {
             $draws[$i] = Beta::draw(0.5, 0.5);
         }
-        $number = array_sum((array) $draws) / count($draws);
+        $number = array_sum((array)$draws) / count($draws);
         $this->assertEquals(0.5, $number, "Attempting to draw statically from B(0.5, 0.5) {$scale} times gives us a value too far from the expected mean. This could be just random chance iff testObjectDraw failed too: if it didn't, this is a definite problem.", 0.01);
     }
 
@@ -90,18 +90,33 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
          * array of arrays with a,b,x,test,value
          */
         $params = [
-          [0.5,1.5,0.5,"pdf",0.63661977236758134308],
-          [2.0,1.5,0.5,"pdf",1.3258252147247766083],
-          [4.0,1.5,0.5,"pdf",0.87007279716313464917],
-          [0.5,1.5,0.5,"cdf",0.81830988618379067154],
-          [2.0,1.5,0.5,"cdf",0.38128156646177091615],
-          [4.0,1.5,0.5,"cdf",0.11887865938082554577],
-        ];
+            // alpha changes for given beta
+            [0.5, 1.5, 0.5, "pdf", 0.63661977236758134308],
+            [2.0, 1.5, 0.5, "pdf", 1.32582521472477660830],
+            [4.0, 1.5, 0.5, "pdf", 0.87007279716313464917],
+            [0.5, 1.5, 0.5, "cdf", 0.81830988618379067154],
+            [2.0, 1.5, 0.5, "cdf", 0.38128156646177091615],
+            [4.0, 1.5, 0.5, "cdf", 0.11887865938082554577],
+            // beta changes for given alpha
+            [2.0, 0.5, 0.5, "pdf", 0.53033008588991064330],
+            [2.0, 2.0, 0.5, "pdf", 1.50000000000000000000],
+            [2.0, 4.0, 0.5, "pdf", 1.25000000000000000000],
+            [2.0, 0.5, 0.5, "cdf", 0.11611652351681559450],
+            [2.0, 2.0, 0.5, "cdf", 0.50000000000000000000],
+            [2.0, 4.0, 0.5, "cdf", 0.81250000000000000000],
 
+            // nonstandard parameters
+            [0.0001, 10000, 0.5, "pdf", 0],
+            [0.0001, 0.0001, 0.5, "pdf", 0.00019997227932343229378],
+            [10000000, 10000000, 0.5, "pdf", 3568.2481877024396040, 1e-3],
+            [1, 0.1, 0.9999, "pdf", 398.10717055349725077, 1e-10],
+            [1, 0.1, 0.9999, "cdf", 0.60189282944650274923, 1e-11],
+            [10000000, 0.00001, 1, "cdf", 1],
+        ];
 
         foreach ($params as $param) {
             $d = new Beta($param[0], $param[1]);
-            $this->assertEquals($d->{$param[3]}($param[2]), $param[4],  strtoupper($param[3])." incorrect", 1e-6);
+            $this->assertEquals($d->{$param[3]}($param[2]), $param[4], strtoupper($param[3]) . " incorrect", isset($param[5]) ? $param[5] : 1e-15);
         }
 
     }

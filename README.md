@@ -59,6 +59,9 @@ if($draw > 0.5) {
 // $beta->cdf($x) = [0,1] non-decreasing
 // $beta::quantile($y in [0,1]) = [0,1] (aliased Beta::icdf)
 // $beta->rand() = [0,1]
+
+// for BetaICDF there is optional paramerer maxIterations = 100, to change default value type
+// $beta->icdf($x, ["maxIterations" => 30])
 ```
 
 ## Alternatives

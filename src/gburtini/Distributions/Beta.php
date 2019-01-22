@@ -64,34 +64,33 @@ class Beta extends Distribution
     /**
      * @param $x
      * @return float|int
-     * https://en.wikipedia.org/wiki/Beta_function#Incomplete_beta_function
+     * Definition: https://en.wikipedia.org/wiki/Beta_function#Incomplete_beta_function
+     * we can calculate integral but better idea is to use fraction representation:
+     * In our code there is implemented method http://functions.wolfram.com/GammaBetaErf/Beta3/10/
      */
     public function cdf($x)
     {
-//        $exponent = log() - $this->logB;
-//        return exp($exponent);
         return BetaFunction::incompleteBetaFunction($x, $this->alpha, $this->beta);
     }
 
-    public function icdf($p)
+    public function icdf($p, $params = ["maxIterations" => 100])
     {
         $x = 0;
         $a = 0;
         $b = 1;
         $precision = $this->targetPrecision;
-        $maxIterations = 100; // this can be changed and should probably be offered in a more configuration friendly way
+        $maxIterations = $params["maxIterations"];
         $currentIteration = 0;
 
         // limiting the currentIteration to 100 is a bit of a hack. I am not really sold.
-        while ((($b - $a) > $precision) && ($currentIteration < $maxIterations)) {
+        while ((($b - $a) > $precision) && ($currentIteration++ < $maxIterations)) {
             $x = ($a + $b) / 2;
 
-            if (BetaFunction::incompleteBetaFunction($x, $this->alpha, $this->beta) > $p) {
+            if ($this->cdf($x) > $p) {
                 $b = $x;
             } else {
                 $a = $x;
             }
-            $currentIteration = $currentIteration + 1;
         }
 
         return $x;
