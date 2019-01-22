@@ -34,16 +34,11 @@ class InverseNormal extends Distribution implements DistributionInterface
 
     public static function draw($mu, $lambda)
     {
-        $norm = new Normal(0, 1);
-        $v = $norm->draw(0, 1);
+        $v = Normal::draw(0, 1);
         $y = pow($v, 2);
         $x = $mu + (pow($mu, 2) * $y) / (2 * $lambda) - ($mu / (2 * $lambda)) * sqrt((4 * $mu * $lambda * $y) + (pow($mu, 2) * pow($y, 2)));
         $z = mt_rand() / mt_getrandmax();
-        if ($z <= ($mu / ($mu + $x))) {
-            return $x;
-        } else {
-            return (pow($mu, 2) / $x);
-        }
+        return ($z <= ($mu / ($mu + $x))) ? $x : (pow($mu, 2) / $x);
     }
 
     public function pdf($x)

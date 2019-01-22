@@ -63,6 +63,7 @@ class Gamma extends Distribution implements DistributionInterface
             while (true) {
                 $u1 = rand() / getrandmax();
 
+                // todo: we should refactor this or type test that can reproduce these conditions
                 if (!((1e-7 < $u1) && ($u1 < 0.9999999))) {
                     continue;
                 }
@@ -79,7 +80,7 @@ class Gamma extends Distribution implements DistributionInterface
             }
         } elseif ($alpha == 1.0) {
             $u = rand()/getrandmax();
-            while ($u <= 1e-7) {
+            while ($u <= 1e-7) {// todo: how to reproduce
                 $u = rand()/getrandmax();
             }
             return -log($u) * $beta;
