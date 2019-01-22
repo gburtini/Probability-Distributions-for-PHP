@@ -31,9 +31,9 @@ namespace gburtini\Distributions;
 
 use gburtini\Distributions\Accessories\GammaFunction;
 use gburtini\Distributions\Accessories\BetaFunction;
-use gburtini\Distributions\Accessories\IncompleteGammaFunction;
+use gburtini\Distributions\Interfaces\DistributionInterface;
 
-class Beta extends Distribution
+class Beta extends Distribution implements DistributionInterface
 {
     public $alpha;
     public $beta;

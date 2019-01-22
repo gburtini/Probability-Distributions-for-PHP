@@ -10,9 +10,11 @@
 */
 namespace gburtini\Distributions;
 
+use gburtini\Distributions\Interfaces\DistributionInterface;
+
 require_once dirname(__FILE__) . "/Distribution.php";
 
-class Normal extends Distribution
+class Normal extends Distribution implements DistributionInterface
 {
     // TODO: implement a skewness, kurtosis normal.
     protected $mean;

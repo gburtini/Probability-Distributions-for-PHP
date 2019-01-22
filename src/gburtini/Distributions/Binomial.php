@@ -10,8 +10,9 @@
 namespace gburtini\Distributions;
 
 use gburtini\Distributions\Accessories\GammaFunction;
+use gburtini\Distributions\Interfaces\DistributionInterface;
 
-class Binomial extends Distribution
+class Binomial extends Distribution implements DistributionInterface
 {
     public $n;
     public $p;

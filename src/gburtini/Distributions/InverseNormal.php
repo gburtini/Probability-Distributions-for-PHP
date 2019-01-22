@@ -5,12 +5,29 @@
 */
 namespace gburtini\Distributions;
 
+use gburtini\Distributions\Interfaces\DistributionInterface;
+
 require_once dirname(__FILE__) . "/Normal.php";
 require_once dirname(__FILE__) . "/Distribution.php";
 
-
-class InverseNormal extends Distribution
+/**
+ * Class InverseNormal
+ * @package gburtini\Distributions
+ *
+ * https://en.wikipedia.org/wiki/Normal-inverse_Gaussian_distribution
+ * http://mathworld.wolfram.com/InverseGaussianDistribution.html
+ */
+class InverseNormal extends Distribution implements DistributionInterface
 {
+    private $mu;
+    private $lambda;
+
+    public function __construct($mean, $scale) // mu, lambda
+    {
+        $this->mu = $mean;
+        $this->lambda = $scale;
+    }
+
     public static function draw($mu, $lambda)
     {
         $norm = new Normal(0, 1);
@@ -23,5 +40,11 @@ class InverseNormal extends Distribution
         } else {
             return (pow($mu, 2) / $x);
         }
+    }
+
+    public function pdf($x)
+    {
+        return sqrt($this->lambda / ( 2 * M_PI * pow($x,3)) )
+            * exp(-$this->lambda * pow($x - $this->mu,2) / (2 * $x * pow($this->mu,2)) );
     }
 }

@@ -16,14 +16,31 @@
 
 namespace gburtini\Distributions;
 
-class Gamma extends Distribution
+use gburtini\Distributions\Accessories\GammaFunction;
+use gburtini\Distributions\Interfaces\DistributionInterface;
+
+/**
+ * Class Gamma
+ * https://en.wikipedia.org/wiki/Gamma_distribution
+ * @package gburtini\Distributions
+ */
+class Gamma extends Distribution implements DistributionInterface
 {
     protected $shape;
     protected $rate;
+
+    /**
+     * Gamma constructor.
+     * @param $shape - α > 0
+     * @param $rate - β > 0 - this is inverse of scale θ > 0 scale β = 1/θ
+     *
+     *
+     *
+     */
     public function __construct($shape, $rate)
     {
-        $this->shape = floatval($shape);
-        $this->rate = floatval($rate);
+        $this->shape = floatval($shape); // alpha
+        $this->rate = floatval($rate); // beta
     }
     public function rand()
     {
@@ -98,5 +115,12 @@ class Gamma extends Distribution
         if ($a <= 0 || $b <= 0) {
             throw new \InvalidArgumentException("Alpha and beta must be greater than 0.");
         }
+    }
+
+    public function pdf($x)
+    {
+        $a = $this->shape;
+        $b = $this->rate;
+        return exp($a * log($b) + ($a-1) * log($x) - $b * $x - GammaFunction::logGammaFunction($a));
     }
 }

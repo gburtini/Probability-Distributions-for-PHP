@@ -9,8 +9,9 @@ namespace gburtini\Distributions;
 
 use gburtini\Distributions\Accessories\GammaFunction;
 use gburtini\Distributions\Accessories\BetaFunction;
+use gburtini\Distributions\Interfaces\DistributionInterface;
 
-class Weibull extends Distribution
+class Weibull extends Distribution implements DistributionInterface
 {
     /**
      * Shape parameter

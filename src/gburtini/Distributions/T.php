@@ -10,10 +10,10 @@
 */
 namespace gburtini\Distributions;
 
-use gburtini\Distributions\Accessories\GammaFunction;
 use gburtini\Distributions\Accessories\BetaFunction;
+use gburtini\Distributions\Interfaces\DistributionInterface;
 
-class T extends Distribution
+class T extends Distribution implements DistributionInterface
 {
     protected $degrees;
     public function __construct($dof)

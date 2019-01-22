@@ -52,9 +52,4 @@ class GammaFunctionTest extends PHPUnit_Framework_TestCase
         $this->setExpectedException('InvalidArgumentException');
         $g::validateParameters(-1,0);
     }
-
-    public function testLoopFactorial()
-    {
-        // $num
-    }
 }

@@ -1,8 +1,11 @@
 <?php
 namespace gburtini\Distributions;
 
+// TODO: Document or depreciate and remove this file
+//
 class Bootstrap
 {
+    // I propose to depreciate this class, It is unclear why it is added
     // TODO: this file is completely unfinished: consider implementing this as a Distribution itself with all the associated methods.
     public static function resampleWithReplacement($data, $n)
     {

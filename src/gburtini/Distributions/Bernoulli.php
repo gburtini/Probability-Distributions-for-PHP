@@ -6,7 +6,10 @@
     */
 namespace gburtini\Distributions;
 
-class Bernoulli extends Distribution
+
+use gburtini\Distributions\Interfaces\DistributionInterface;
+
+class Bernoulli extends Distribution implements DistributionInterface
 {
     public $fraction;
 

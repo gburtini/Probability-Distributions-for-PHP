@@ -5,10 +5,10 @@ abstract class Distribution
 {
     protected $targetPrecision = 1e-15;
 
-    public function pdf($x)
-    {
-        throw new \BadMethodCallException("PDF not implemented. Please create a pull request if you implement it yourself.");
-    }
+//    public function pdf($x)
+//    {
+//        throw new \BadMethodCallException("PDF not implemented. Please create a pull request if you implement it yourself.");
+//    }
 
     public function pmf($x) // alias for pdf
     {

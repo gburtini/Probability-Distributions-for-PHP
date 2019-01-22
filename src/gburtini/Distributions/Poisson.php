@@ -24,8 +24,9 @@ namespace gburtini\Distributions;
 
 use gburtini\Distributions\Accessories\GammaFunction;
 use gburtini\Distributions\Accessories\IncompleteGammaFunction;
+use gburtini\Distributions\Interfaces\DistributionInterface;
 
-class Poisson extends Distribution
+class Poisson extends Distribution implements DistributionInterface
 {
     public $lambda;
 
