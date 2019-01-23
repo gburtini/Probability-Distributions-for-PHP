@@ -17,6 +17,7 @@
 namespace gburtini\Distributions;
 
 use gburtini\Distributions\Accessories\GammaFunction;
+use gburtini\Distributions\Accessories\IncompleteGammaFunction;
 use gburtini\Distributions\Interfaces\DistributionInterface;
 
 /**
@@ -46,6 +47,7 @@ class Gamma extends Distribution implements DistributionInterface
     {
         return self::draw($this->shape, $this->rate);
     }
+    // todo: refactor this code
     public static function draw($shape, $rate)
     {
         // This is a translation of Python Software Foundation licensed code from the Python project.
@@ -123,5 +125,19 @@ class Gamma extends Distribution implements DistributionInterface
         $a = $this->shape;
         $b = $this->rate;
         return exp($a * log($b) + ($a-1) * log($x) - $b * $x - GammaFunction::logGammaFunction($a));
+    }
+
+    /**
+     * @param double $x
+     * @return double
+     */
+    public function cdf($x)
+    {
+        if($x <= 0) { return (double) 0; }
+
+        $a = $this->shape;
+        $b = $this->rate;
+
+        return 1 - IncompleteGammaFunction::complementedIncompleteGamma($a, $b * $x);
     }
 }

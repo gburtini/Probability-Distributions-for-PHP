@@ -44,6 +44,12 @@ class IncompleteGammaFunctionTest extends PHPUnit_Framework_TestCase
         }
     }
 
+    // THIS IS WRONG
+    // N[Gamma[0.233471428173, 3.87518208831], 20] = 0.00630164
+    // N[Gamma[3, 2/4], 20] = 1.9712246440660586267
+    // TODO: DISCUSS THIS ERROR
+    // http://mathworld.wolfram.com/IncompleteGammaFunction.html
+    // to check use wolfram alpha
     public function testComplementedIncompleteGammaFunction()
     {
         $accuracy = 1e-8;
@@ -75,6 +81,7 @@ class IncompleteGammaFunctionTest extends PHPUnit_Framework_TestCase
             array( 'x'  =>  3.53372688165 , 'a'  =>  4.64617055529 , 'gamma'  =>  0.657484239452 , ),
             array( 'x'  =>  2.7522918734 , 'a'  =>  2.51145796177 , 'gamma'  =>  0.360258797973 , ),
             array( 'x'  =>  1.604625837 , 'a'  =>  0.274489082575 , 'gamma'  =>  0.0326841393723 , ),
+            // array( 'x'  =>  .5 , 'a'  =>  3 , 'gamma'  =>  1.9712246440660586267 )
         );
 
         foreach ($testCases as $test) {

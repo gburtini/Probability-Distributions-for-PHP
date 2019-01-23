@@ -10,5 +10,15 @@ namespace gburtini\Distributions\Interfaces;
 
 interface DistributionInterface
 {
+    /**
+     * @param double|double[] $x
+     * @return double|double[]
+     */
     public function pdf($x);
+
+    /**
+     * @param double $x
+     * @return double
+     */
+    public function cdf($x);
 }

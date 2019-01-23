@@ -5,6 +5,7 @@
 */
 namespace gburtini\Distributions;
 
+use gburtini\Distributions\Accessories\ErfFunction;
 use gburtini\Distributions\Interfaces\DistributionInterface;
 
 require_once dirname(__FILE__) . "/Normal.php";
@@ -45,5 +46,20 @@ class InverseNormal extends Distribution implements DistributionInterface
     {
         return sqrt($this->lambda / ( 2 * M_PI * pow($x,3)) )
             * exp(-$this->lambda * pow($x - $this->mu,2) / (2 * $x * pow($this->mu,2)) );
+    }
+
+    /**
+     * @param double $x
+     * @return double
+     * http://mathworld.wolfram.com/InverseGaussianDistribution.html
+     */
+    public function cdf($x)
+    {
+        $s = sqrt($this->lambda / (2*$x));
+        $erfM = ErfFunction::val($s * ($x/$this->mu - 1));
+        $erfP = ErfFunction::val($s * ($x/$this->mu + 1));
+
+        return 0.5 * (1 + $erfM)
+            + 0.5 * exp(2*$this->lambda / $this->mu) * (1 - $erfP);
     }
 }

@@ -92,4 +92,13 @@ class Dirichlet extends Distribution implements DistributionInterface
 
         return exp($exponent);
     }
+
+    /**
+     * @param double|double[] $x
+     * @throws \Exception
+     */
+    public function cdf($x)
+    {
+        throw new \Exception("NOT IMPLEMENTED BECAUSE OF NOT DEFINED");
+    }
 }

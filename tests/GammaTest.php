@@ -22,4 +22,10 @@ class GammaTest extends PHPUnit_Framework_TestCase
         $this->setExpectedException('InvalidArgumentException');
         Gamma::validateParameters(-1, 0);
     }
+
+    public function testCDF() {
+        $d = new Gamma(3,1/4);
+        $this->assertEquals(0.014387677966970686644, $d->cdf(2));
+        $this->assertEquals(0, $d->cdf(-2));
+    }
 }

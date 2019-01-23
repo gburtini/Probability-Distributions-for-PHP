@@ -65,7 +65,7 @@ class IncompleteGammaFunction
     *                              -
     *                     1       | |  -t  a-1
     *               =   -----     |   e   t   dt.
-    *                    -      | |
+    *                   ┌─      | |
     *                   | (a)    -
     *                             x
     *
@@ -75,6 +75,20 @@ class IncompleteGammaFunction
     * continued fraction expansion, depending on the relative
     * values of a and x.
     *
+     * On page
+     *
+     * http://mathworld.wolfram.com/IncompleteGammaFunction.html
+     *
+     * We have definition:
+     *
+     *  Gamma(a,x)=int_x^inftyt^(a-1)e^(-t)dt.
+     *
+     * so this function is Gamma(a,x) / Gamma(a)
+     *
+     * This could be called Regularized Gamma Function
+     *
+     * http://mathworld.wolfram.com/RegularizedGammaFunction.html
+     *
     * ACCURACY:
     *
     * Tested at random a, x.
@@ -590,4 +604,19 @@ class IncompleteGammaFunction
 
         return $ans;
     }
+
+//    this is not tested so I commented this code, we should tell more about convention of naming
+//
+//    /**
+//     * @param $s
+//     * @param $x
+//     * @return float|int
+//     *
+//     * https://en.wikipedia.org/wiki/Incomplete_gamma_function
+//     * http://mathworld.wolfram.com/IncompleteGammaFunction.html
+//     *  \gamma(s,x) + \Gamma(s,x) = \Gamma(s).
+//     */
+//    public static function lowerIncompleteGamma($s, $x) {
+//        return exp(GammaFunction::logGammaFunction($s)) - self::incompleteGamma($s, $x);
+//    }
 }

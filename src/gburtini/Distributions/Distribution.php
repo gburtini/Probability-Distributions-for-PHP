@@ -15,10 +15,10 @@ abstract class Distribution
 //        return $this->pdf($x);
 //    }
 
-    public function cdf($x)
-    {
-        throw new \BadMethodCallException("CDF not implemented. Please create a pull request if you implement it yourself.");
-    }
+//    public function cdf($x)
+//    {
+//        throw new \BadMethodCallException("CDF not implemented. Please create a pull request if you implement it yourself.");
+//    }
 
     public function icdf($y)
     {

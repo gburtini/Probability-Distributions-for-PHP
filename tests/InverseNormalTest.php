@@ -18,4 +18,9 @@ class InverseNormalTest extends PHPUnit_Framework_TestCase
         $this->assertInternalType('double', (new InverseNormal(4,1/5))->rand());
         $this->assertInternalType('double', InverseNormal::draw(4,1/5));
     }
+
+    public function testCDF() {
+        $d = new InverseNormal(3,5);
+        $this->assertEquals(0.41692560139409508138, $d->cdf(2), "Invalid value of CDF", 1e-7);
+    }
 }

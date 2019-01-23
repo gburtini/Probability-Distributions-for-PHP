@@ -107,11 +107,9 @@ class Binomial extends Distribution implements DistributionInterface
         } while ($k < $this->n);
         return $k;
     }
-}
 
-
-class BinomialCI extends Binomial
-{
+    // there is no reason why BinomialCi is created, it can be method of Binomial
+    // there should be documentation added
     public function jeffreys($confidence = 0.95)
     {
         // this is a Bayesian derivation with great frequentist properties, even around 0 and 1 success rates.

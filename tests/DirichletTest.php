@@ -45,4 +45,10 @@ class DirichletTest extends PHPUnit_Framework_TestCase
     public function testRand() {
         $this->assertInternalType('array', (new Dirichlet([2]))->rand());
     }
+
+    public function testCDF() {
+        $d = new Dirichlet([1,2,3]);
+        $this->setExpectedException('Exception');
+        $invalid = $d->cdf(2);
+    }
 }
