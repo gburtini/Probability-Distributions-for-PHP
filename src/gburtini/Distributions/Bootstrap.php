@@ -1,4 +1,5 @@
 <?php
+
 namespace gburtini\Distributions;
 
 // TODO: Document or depreciate and remove this file

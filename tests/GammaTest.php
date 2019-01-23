@@ -28,4 +28,11 @@ class GammaTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(0.014387677966970686644, $d->cdf(2));
         $this->assertEquals(0, $d->cdf(-2));
     }
+    public function testMeanVarianceSkewnessKurtosis() {
+        $d = new Gamma(4,1/6);
+        $this->assertEquals(24, $d->mean());
+        $this->assertEquals(144, $d->variance());
+        $this->assertEquals(1, $d->skewness());
+        $this->assertEquals(1.5000000000000000000, $d->kurtosis());
+    }
 }

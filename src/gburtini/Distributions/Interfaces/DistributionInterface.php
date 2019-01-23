@@ -21,4 +21,23 @@ interface DistributionInterface
      * @return double
      */
     public function cdf($x);
+
+    /**
+     * @return double|double[]
+     */
+    public function mean();
+    /**
+     * @return double|double[]
+     */
+    public function variance();
+//    /**
+//     * @return double|double[]
+//     */
+//    public function skewness();
+//    /**
+//       This is commented out because of problem with Mathematica a definion and MathWorld definition
+//       if kurtosis is implemented then uses equations from MathWorld
+//     * @return double|double[]
+//     */
+//    public function kurtosis();
 }

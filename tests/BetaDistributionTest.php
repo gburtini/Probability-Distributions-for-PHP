@@ -120,4 +120,19 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
         }
 
     }
+
+    public function testMean()
+    {
+        $d = new Beta(3, 4);
+        $this->assertEquals(0.42857142857142857143,$d->mean());
+    }
+
+    public function testMeanVarianceSkewnessKurtosis() {
+        $d = new Beta(3,4);
+        $expected = [0.42857142857142857143, 0.030612244897959183673, 0.18144368465060578505, 2.4444444444444444444];
+        $values = [$d->mean(), $d->variance(), $d->skewness(), $d->kurtosis()];
+        for($i = 0; $i < count($expected); $i++) {
+            $this->assertEquals($expected[$i], $values[$i]);
+        }
+    }
 }

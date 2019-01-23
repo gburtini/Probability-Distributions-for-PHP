@@ -51,4 +51,18 @@ class DirichletTest extends PHPUnit_Framework_TestCase
         $this->setExpectedException('Exception');
         $invalid = $d->cdf(2);
     }
+
+    public function testMean()
+    {
+        $d = new Dirichlet([1,2,3]);
+        $this->assertEquals([0.16666666666666666667, 0.33333333333333333333],$d->mean());
+        $this->assertEquals(3,$d->getDimension());
+    }
+
+    public function testVariance() {
+        $d = new Dirichlet([1,2,3]);
+        $this->setExpectedException('Exception');
+        $invalid = $d->variance();
+    }
+
 }

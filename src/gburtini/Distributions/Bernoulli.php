@@ -11,13 +11,19 @@ use gburtini\Distributions\Interfaces\DistributionInterface;
 
 class Bernoulli extends Distribution implements DistributionInterface
 {
-    public $fraction;
+    public $fraction; // this should be private because of we do not want
+    // to allow for modification of this parameter because of validation
+    // is in constructor
+    private $p;
+    private $q;
 
     public function __construct($fraction)
     {
         self::validateParameters($fraction);
 
         $this->fraction = $fraction;
+        $this->p = $fraction;
+        $this->q = (1-$fraction);
     }
 
     public function mean()
@@ -39,10 +45,7 @@ class Bernoulli extends Distribution implements DistributionInterface
 
     public static function draw($fraction)
     {
-        if ((mt_rand()/mt_getrandmax()) > $fraction) {
-            return 1;
-        }
-        return 0;
+        return (int) ( (mt_rand()/mt_getrandmax()) > $fraction);
     }
 
     public static function validateParameters($fraction)
@@ -87,5 +90,25 @@ class Bernoulli extends Distribution implements DistributionInterface
             return 0;
         }
         return 1;
+    }
+
+    /**
+     * @return double|double[]
+     */
+    public function skewness()
+    {
+        return (1-2 * $this->fraction) / sqrt($this->p * $this->q);
+    }
+
+    /**
+     * @return double|double[]
+     */
+    public function kurtosis()
+    {
+        // this ie ex curtosis from wiki
+        //return // (1 - 6 * $this->p * $this->q) / ( $this->p * $this->q );
+
+        $p = $this->p;
+        return 3 + (1 - 6 * (1 - $p) * $p)/((1 - $p) * $p);
     }
 }

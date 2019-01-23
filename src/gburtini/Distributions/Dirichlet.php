@@ -101,4 +101,40 @@ class Dirichlet extends Distribution implements DistributionInterface
     {
         throw new \Exception("NOT IMPLEMENTED BECAUSE OF NOT DEFINED");
     }
+
+    /**
+     * @return double|double[]
+     */
+    public function mean()
+    {
+        $sum = array_sum($this->alpha);
+        $alphaCopy = $this->alpha; // clone to avoid destruction alpha by reference in next method
+        array_splice($alphaCopy, -1);
+        return array_map(function ($a) use ($sum) {return $a/$sum; }, $alphaCopy);
+    }
+
+    /**
+     * @return double|double[]
+     */
+    public function variance()
+    {
+        throw new \Exception("NOT_IMPLEMENTED");
+        // TODO: Implement variance() method.
+    }
+//
+//    /**
+//     * @return double|double[]
+//     */
+//    public function skewness()
+//    {
+//        // TODO: Implement skewness() method.
+//    }
+//
+//    /**
+//     * @return double|double[]
+//     */
+//    public function kurtosis()
+//    {
+//        // TODO: Implement kurtosis() method.
+//    }
 }

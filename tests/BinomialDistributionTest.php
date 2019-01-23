@@ -95,4 +95,13 @@ class BinomialDistributionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($d->icdf(0.99999), 35, "Inverse CDF incorrect");
         $this->assertEquals($d->icdf(0.9999999), 38, "Inverse CDF incorrect");
     }
+
+    public function testMeanVarianceSkewnessKurtosis() {
+        $d = new Binomial(3,0.2);
+        $expected = [0.60000000000000000000, 0.48000000000000000000, 0.86602540378443864676, 3.0833333333333333333];
+        $values = [$d->mean(), $d->variance(), $d->skewness(), $d->kurtosis()];
+        for($i = 0; $i < count($expected); $i++) {
+            $this->assertEquals($expected[$i], $values[$i]);
+        }
+    }
 }

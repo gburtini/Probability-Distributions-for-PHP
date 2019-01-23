@@ -139,4 +139,24 @@ class Binomial extends Distribution implements DistributionInterface
             "upper" => $upper
         );
     }
+
+    /**
+     * @return double|double[]
+     */
+    public function skewness()
+    {
+        $n = $this->n;
+        $p = $this->p;
+        return (1-2 * $p)/sqrt($n * (1-$p) * $p);
+    }
+
+    /**
+     * @return double|double[]
+     */
+    public function kurtosis()
+    {
+        $n = $this->n;
+        $p = $this->p;
+        return 3+(1-6 * (1-$p) * $p)/($n * (1-$p) * $p);
+    }
 }

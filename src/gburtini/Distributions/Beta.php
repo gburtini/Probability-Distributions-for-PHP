@@ -118,4 +118,43 @@ class Beta extends Distribution implements DistributionInterface
             throw new \InvalidArgumentException("α (\$a = " . var_export($a, true) . "), β (\$b = " . var_export($b, true) . ") must each be greater than 0. ");
         }
     }
+
+    /**
+     * @return double|double[]
+     */
+    public function mean()
+    {
+        return $this->alpha / ( $this->alpha + $this->beta );
+    }
+
+    /**
+     * @return double|double[]
+     */
+    public function variance()
+    {
+        $a = $this->alpha;
+        $b = $this->beta;
+        return ($a * $b)/(pow($a+$b,2) * (1+$a+$b));
+    }
+
+    /**
+     * @return double|double[]
+     */
+    public function skewness()
+    {
+        $a = $this->alpha;
+        $b = $this->beta;
+        return (2 * (-$a + $b) * sqrt(1+$a+$b))/(sqrt($a) * sqrt($b) * (2+$a+$b));
+    }
+
+    /**
+     * @return double|double[]
+     */
+    public function kurtosis()
+    {
+        $a = $this->alpha;
+        $b = $this->beta;
+        return (3 * (1+$a+$b) * ($a *$b *(-6+$a+$b)+2 * pow($a+$b,2)))
+            / ($a * $b * (2+$a+$b) * (3+$a+$b));
+    }
 }

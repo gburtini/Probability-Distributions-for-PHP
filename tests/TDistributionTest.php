@@ -199,6 +199,18 @@ class TDistributionTest extends PHPUnit_Framework_TestCase
         (new T(2))->icdf(4);
     }
 
+    public function testMean() {
+        $d = new T(1);
+        $this->assertEquals(null,$d->mean());
+
+        $d = new T(2);
+        $this->assertEquals(0,$d->mean());
+    }
+
+    public function testVariance() {
+        $this->setExpectedException('Exception'); // not implemented
+        (new T(2))->variance();
+    }
     //
 //    public function testExtremalCases() {
 //        $d = new T(1e309);

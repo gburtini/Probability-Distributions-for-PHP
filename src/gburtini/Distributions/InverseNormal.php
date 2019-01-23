@@ -62,4 +62,47 @@ class InverseNormal extends Distribution implements DistributionInterface
         return 0.5 * (1 + $erfM)
             + 0.5 * exp(2*$this->lambda / $this->mu) * (1 - $erfP);
     }
+
+    /**
+     * @return double|double[]
+     */
+    public function mean()
+    {
+        return $this->mu;
+    }
+
+    /**
+     * @return double|double[]
+     */
+    public function variance()
+    {
+        return pow($this->mu,3) / $this->lambda;
+    }
+
+    /**
+     * @return double|double[]
+     */
+    public function skewness()
+    {
+        return 3 * sqrt($this->mu / $this->lambda );
+    }
+
+    /**
+     * @return double|double[]
+     *
+     * Warning. Controversial values during test!
+     *
+     * Mathematica 11.3 gives 14.25 but equation form MathWorld 11.25
+     *
+     * 14.25 <- mathematica
+     * 11.25 <- this program
+     *
+     * N[(#[InverseGaussianDistribution[3, 4]]) & /@ {Mean, Variance, Skewness, Kurtosis}, 20]
+     *
+     * http://mathworld.wolfram.com/InverseGaussianDistribution.html
+     */
+    public function kurtosis()
+    {
+        return 15 * $this->mu / $this->lambda;
+    }
 }

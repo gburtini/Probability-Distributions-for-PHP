@@ -155,4 +155,19 @@ class Normal extends Distribution implements DistributionInterface
     }
 
 
+//    /**
+//     * @return double|double[]
+//     */
+//    public function skewness()
+//    {
+//        // TODO: Implement skewness() method.
+//    }
+//
+//    /**
+//     * @return double|double[]
+//     */
+//    public function kurtosis()
+//    {
+//        // TODO: Implement kurtosis() method.
+//    }
 }

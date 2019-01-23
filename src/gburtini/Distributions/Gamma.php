@@ -140,4 +140,53 @@ class Gamma extends Distribution implements DistributionInterface
 
         return 1 - IncompleteGammaFunction::complementedIncompleteGamma($a, $b * $x);
     }
+
+    /**
+     * @return double|double[]
+     * http://mathworld.wolfram.com/Mean.html
+     */
+    public function mean()
+    {
+        $a = $this->shape;
+        $t = 1 / $this->rate;
+        return $a * $t;
+    }
+
+    /**
+     * @return float|int
+     * http://mathworld.wolfram.com/Variance.html
+     */
+    public function variance() {
+        $a = $this->shape;
+        $t = 1 / $this->rate;
+        return $a * $t * $t;
+    }
+
+    /**
+     * @return float|int
+     * http://mathworld.wolfram.com/Skewness.html
+     */
+    public function skewness() {
+        $a = $this->shape;
+        return 2 / sqrt($a);
+    }
+
+    /**
+     * @return float|int
+     * http://mathworld.wolfram.com/Kurtosis.html
+     *
+     * This is controversial because of Both
+     * https://en.wikipedia.org/wiki/Gamma_distribution
+     * and
+     * http://mathworld.wolfram.com/GammaDistribution.html
+     * gives this equation but Mathematica gives
+     * N[Kurtosis[GammaDistribution[4, 1]], 20]
+     * 4.5000000000000000000
+     *
+     * Probably Mathematica has bug, this is connected with version 11.3
+     */
+    public function kurtosis() {
+        $a = $this->shape;
+        return 6 / $a;
+    }
 }

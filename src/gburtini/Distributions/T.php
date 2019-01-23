@@ -117,4 +117,40 @@ class T extends Distribution implements DistributionInterface
         $t = sqrt($k / $z - $k);
         return $sign * $t;
     }
+
+    /**
+     * @return double|double[]
+     */
+    public function mean()
+    {
+        return $this->degrees > 1 ? 0 : null;
+        // TODO: Implement mean() method.
+    }
+
+    /**
+     * @return double|double[]
+     * 	{\displaystyle \textstyle {\frac {\nu }{\nu -2}}} \textstyle\frac{\nu}{\nu-2} for {\displaystyle \nu >2} \nu > 2, ∞ for {\displaystyle 1<\nu \leq 2} 1 < \nu \le 2,
+     * https://en.wikipedia.org/wiki/Student%27s_t-distribution
+     */
+    public function variance()
+    {
+        throw new \Exception("INT IMPLEMENTED");
+        // TODO: Implement variance() method.
+    }
+
+//    /**
+//     * @return double|double[]
+//     */
+//    public function skewness()
+//    {
+//        // TODO: Implement skewness() method.
+//    }
+//
+//    /**
+//     * @return double|double[]
+//     */
+//    public function kurtosis()
+//    {
+//        // TODO: Implement kurtosis() method.
+//    }
 }

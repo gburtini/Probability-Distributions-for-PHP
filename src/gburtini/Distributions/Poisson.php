@@ -166,4 +166,20 @@ class Poisson extends Distribution implements DistributionInterface
     {
         return IncompleteGammaFunction::InverseComplementedIncompleteGamma($k+1, $p);
     }
+
+//    /**
+//     * @return double|double[]
+//     */
+//    public function skewness()
+//    {
+//        // TODO: Implement skewness() method.
+//    }
+//
+//    /**
+//     * @return double|double[]
+//     */
+//    public function kurtosis()
+//    {
+//        // TODO: Implement kurtosis() method.
+//    }
 }

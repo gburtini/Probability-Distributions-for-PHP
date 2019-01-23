@@ -103,4 +103,20 @@ class Weibull extends Distribution implements DistributionInterface
         $x = mt_rand() / mt_getrandmax();
         return $lambda * exp(log(-log($x)) / $k);
     }
+
+//    /**
+//     * @return double|double[]
+//     */
+//    public function skewness()
+//    {
+//        // TODO: Implement skewness() method.
+//    }
+//
+//    /**
+//     * @return double|double[]
+//     */
+//    public function kurtosis()
+//    {
+//        // TODO: Implement kurtosis() method.
+//    }
 }

@@ -155,6 +155,9 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 
 		$d = new Weibull(0.2, 3.0);
 		$this->assertEquals(3.25296000000e7, $d->variance(), "Variance incorrect", 1e-6);
+		$this->assertEquals(sqrt(3.25296000000e7), $d->sd(), "Variance incorrect", 1e-6);
+
+
 	}
 
 	public function testWeibullCDFICDF() {

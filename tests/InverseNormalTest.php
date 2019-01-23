@@ -23,4 +23,11 @@ class InverseNormalTest extends PHPUnit_Framework_TestCase
         $d = new InverseNormal(3,5);
         $this->assertEquals(0.41692560139409508138, $d->cdf(2), "Invalid value of CDF", 1e-7);
     }
+    public function testMeanVarianceSkewnessKurtosis() {
+        $d = new InverseNormal(3,4);
+        $this->assertEquals(3.0000000000000000000, $d->mean());
+        $this->assertEquals(6.7500000000000000000, $d->variance());
+        $this->assertEquals(2.5980762113533159403, $d->skewness());
+        $this->assertEquals(11.25, $d->kurtosis());
+    }
 }
