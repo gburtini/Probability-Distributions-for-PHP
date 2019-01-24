@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "0.0.3",
   "name": "gburtini/distributions",
   "description":
     "PHP implementation of a number of statistical probability distributions: normal, beta, gamma, etc.",
