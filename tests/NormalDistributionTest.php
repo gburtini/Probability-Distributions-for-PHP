@@ -1,7 +1,12 @@
 <?php
-use gburtini\Distributions\Normal;
 
-class NormalDistributionTest extends PHPUnit_Framework_TestCase
+namespace gburtini\Distributions\Tests;
+
+use gburtini\Distributions\Normal;
+use PHPUnit\Framework\TestCase;
+use SplFixedArray;
+
+class NormalDistributionTest extends TestCase
 {
     public function testNormalInstantiateDistribution()
     {

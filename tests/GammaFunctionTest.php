@@ -1,7 +1,11 @@
 <?php
-use gburtini\Distributions\Accessories\GammaFunction;
 
-class GammaFunctionTest extends PHPUnit_Framework_TestCase
+namespace gburtini\Distributions\Tests;
+
+use gburtini\Distributions\Accessories\GammaFunction;
+use PHPUnit\Framework\TestCase;
+
+class GammaFunctionTest extends TestCase
 {
     // NOTE: this uses the log stirling/lanczos implementations depending on whether $a is above 171 or not (accuracy threshold)
     public function testLogGammaFunction()

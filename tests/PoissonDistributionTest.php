@@ -1,7 +1,12 @@
 <?php
-use gburtini\Distributions\Poisson;
 
-class PoissonDistributionTest extends PHPUnit_Framework_TestCase
+namespace gburtini\Distributions\Tests;
+
+use gburtini\Distributions\Poisson;
+use PHPUnit\Framework\TestCase;
+use SplFixedArray;
+
+class PoissonDistributionTest extends TestCase
 {
     public function testPoissonInstantiateDistribution()
     {
@@ -46,18 +51,18 @@ class PoissonDistributionTest extends PHPUnit_Framework_TestCase
     public function testPoissonPDF()
     {
         $d = new Poisson(2.5);
-    
+
         $this->assertEquals(0.08208499862, $d->pdf(0), 1e-9);
         $this->assertEquals(0.2052124966, $d->pdf(1), 1e-9);
         $this->assertEquals(0.2565156207, $d->pdf(2), 1e-9);
         $this->assertEquals(0.2137630172, $d->pdf(3), 1e-9);
         $this->assertEquals(0.00001021426063, $d->pdf(12), 1e-12);
     }
-    
+
     public function testPoissonCDF()
     {
         $d = new Poisson(2.5);
-    
+
         $this->assertEquals(0.08208499862, $d->cdf(0), 1e-9);
         $this->assertEquals(0.2872974952, $d->cdf(1), 1e-9);
         $this->assertEquals(0.5438131159, $d->cdf(2), 1e-9);
@@ -66,11 +71,11 @@ class PoissonDistributionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(0.9579789618, $d->cdf(5), 1e-9);
         $this->assertEquals(0.9999976158, $d->cdf(12), 1e-9);
     }
-    
+
     public function testPoissonICDF()
     {
         $d = new Poisson(2.5);
-    
+
         $this->assertEquals($d->icdf(0), 0);
         $this->assertEquals($d->icdf(0.082084998), 0);
         $this->assertEquals($d->icdf(0.09), 1);

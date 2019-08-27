@@ -1,9 +1,12 @@
 <?php
-require_once dirname(__FILE__) . "/../src/gburtini/Distributions/Beta.php";
+
+namespace gburtini\Distributions\Tests;
 
 use gburtini\Distributions\Beta;
+use PHPUnit\Framework\TestCase;
+use SplFixedArray;
 
-class BetaDistributionTest extends PHPUnit_Framework_TestCase
+class BetaDistributionTest extends TestCase
 {
     public function testBetaInstantiateDistribution()
     {
@@ -37,7 +40,7 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
         srand(1); // fix the random key, just for consistency.
 
         $d = new Beta(0.5, 0.5);
-        
+
         $scale = 5000;
         $draws = new SplFixedArray($scale);
         for ($i = 0; $i < $scale; $i++) {
@@ -53,7 +56,7 @@ class BetaDistributionTest extends PHPUnit_Framework_TestCase
         srand(1); // fix the random key, just for consistency.
 
         $d = new Beta(1, 10000);
-        
+
         $scale = 1000;
         $draws = new SplFixedArray($scale);
         for ($i = 0; $i < $scale; $i++) {
