@@ -1,21 +1,22 @@
 {
-    "name": "gburtini/distributions",
-    "description": "PHP implementation of a number of statistical probability distributions: normal, beta, gamma, etc.",
-    "authors": [
-        {
-            "name": "Giuseppe Burtini",
-            "email": "joe@truephp.com"
-        }
-    ],
-    "autoload": {
-        "psr-0": {
-            "gburtini\\Distributions":        "src"
-        }
-    },
-    "require": {},
-    "require-dev": {
-        "phpunit/phpunit": "4.4.*",
-        "phpunit/php-code-coverage": "^2.2"
+  "version": "0.0.3",
+  "name": "gburtini/distributions",
+  "description":
+    "PHP implementation of a number of statistical probability distributions: normal, beta, gamma, etc.",
+  "authors": [
+    {
+      "name": "Giuseppe Burtini",
+      "email": "giuseppe@burtini.ca"
     }
-
+  ],
+  "license": "MIT",
+  "autoload": {
+    "psr-0": {
+      "gburtini\\Distributions": "src"
+    }
+  },
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "^4.8"
+  }
 }
