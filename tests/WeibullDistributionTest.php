@@ -1,9 +1,12 @@
 <?php
-require_once dirname(__FILE__) . "/../src/gburtini/Distributions/Weibull.php";
+
+namespace gburtini\Distributions\Tests;
 
 use gburtini\Distributions\Weibull;
+use PHPUnit\Framework\TestCase;
+use SplFixedArray;
 
-class WeibullDistributionTest extends PHPUnit_Framework_TestCase
+class WeibullDistributionTest extends TestCase
 {
 	public function testWeibullInstantiateDistribution() {
 		$distribution1 = new Weibull(2.0, 3.1);
@@ -52,7 +55,7 @@ class WeibullDistributionTest extends PHPUnit_Framework_TestCase
 		}
 
 
-		// These perform differently on PHP <= 7.0. I think the RNG changed: As of PHP 7.1.0, rand() uses the same random number generator as mt_rand(). To preserve backwards compatibility rand() allows max to be smaller than min as opposed to returning FALSE as mt_rand(). 
+		// These perform differently on PHP <= 7.0. I think the RNG changed: As of PHP 7.1.0, rand() uses the same random number generator as mt_rand(). To preserve backwards compatibility rand() allows max to be smaller than min as opposed to returning FALSE as mt_rand().
 		$number = array_sum((array) $draws) / count($draws);
 		$mean = $d->mean();
 		$this->assertEquals($number, $mean, "Attempting to draw from Weibull(3.2, 1.4)) {$scale} times gives us a value too far from the expected mean. This could be just random chance.", 0.015);

@@ -1,9 +1,12 @@
 <?php
-require_once dirname(__FILE__) . "/../src/gburtini/Distributions/Beta.php";
+
+namespace gburtini\Distributions\Tests;
 
 use gburtini\Distributions\Beta;
+use PHPUnit\Framework\TestCase;
+use SplFixedArray;
 
-class BetaDistributionTest extends PHPUnit_Framework_TestCase
+class BetaDistributionTest extends TestCase
 {
     public function testBetaInstantiateDistribution()
     {

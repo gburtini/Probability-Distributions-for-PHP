@@ -1,7 +1,11 @@
 <?php
-use gburtini\Distributions\T;
 
-class TDistributionTest extends PHPUnit_Framework_TestCase
+namespace gburtini\Distributions\Tests;
+
+use gburtini\Distributions\T;
+use PHPUnit\Framework\TestCase;
+
+class TDistributionTest extends TestCase
 {
     public function testTInstantiateDistribution()
     {

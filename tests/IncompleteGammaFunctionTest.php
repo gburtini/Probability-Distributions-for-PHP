@@ -1,7 +1,11 @@
 <?php
-use gburtini\Distributions\Accessories\IncompleteGammaFunction;
 
-class IncompleteGammaFunctionTest extends PHPUnit_Framework_TestCase
+namespace gburtini\Distributions\Tests;
+
+use gburtini\Distributions\Accessories\IncompleteGammaFunction;
+use PHPUnit\Framework\TestCase;
+
+class IncompleteGammaFunctionTest extends TestCase
 {
     public function testIncompleteGammaFunction()
     {

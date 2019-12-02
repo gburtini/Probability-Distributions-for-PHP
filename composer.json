@@ -11,12 +11,19 @@
   ],
   "license": "MIT",
   "autoload": {
-    "psr-0": {
-      "gburtini\\Distributions": "src"
+    "psr-4": {
+      "gburtini\\Distributions\\": "src/gburtini/Distributions"
     }
   },
-  "require": {},
+  "autoload-dev": {
+    "psr-4": {
+      "gburtini\\Distributions\\Tests\\": "tests"
+    }
+  },
+  "require": {
+    "php": ">=5.4"
+  },
   "require-dev": {
-    "phpunit/phpunit": "^4.8"
+    "phpunit/phpunit": "^4.8.36"
   }
 }

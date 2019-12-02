@@ -1,7 +1,11 @@
 <?php
-use gburtini\Distributions\Accessories\BetaFunction;
 
-class BetaFunctionTest extends PHPUnit_Framework_TestCase
+namespace gburtini\Distributions\Tests;
+
+use gburtini\Distributions\Accessories\BetaFunction;
+use PHPUnit\Framework\TestCase;
+
+class BetaFunctionTest extends TestCase
 {
     public function testBetaFunction()
     {

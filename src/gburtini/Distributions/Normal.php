@@ -55,9 +55,10 @@ class Normal extends Distribution implements DistributionInterface
     }
     public function pdf($x)
     {
-        $z = ($x - $this->mean)/$this->variance;
+        $sigma = $this->sd();
+        $z = ($x - $this->mean) / $sigma;
 
-        return exp(-$z*$z/2) / ($this->variance * M_SQRTPI * M_SQRT2);
+        return exp(-$z * $z / 2) / ($sigma * M_SQRTPI * M_SQRT2);
     }
 
     public function cdf($x)
