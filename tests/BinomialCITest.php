@@ -1,9 +1,11 @@
 <?php
-require_once dirname(__FILE__) . "/../src/gburtini/Distributions/Binomial.php";
+
+namespace gburtini\Distributions\Tests;
 
 use gburtini\Distributions\BinomialCI;
+use PHPUnit\Framework\TestCase;
 
-class BinomialCITest extends PHPUnit_Framework_TestCase
+class BinomialCITest extends TestCase
 {
     public function testBinomialInstantiateDistribution()
     {
