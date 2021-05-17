@@ -42,7 +42,7 @@ class Binomial extends Distribution implements DistributionInterface
         return self::draw($this->n, $this->p);
     }
 
-    /** O(n) method of generating Binom(n,p) distributed random numbers */
+    /* O(n) method of generating Binom(n,p) distributed random numbers */
     public static function draw($n, $p)
     {
         $x = 0;
@@ -75,7 +75,7 @@ class Binomial extends Distribution implements DistributionInterface
         return exp($logP);
     }
 
-    /* Could be improved with the implementation of the incomplete beta funciton */
+    /* Could be improved with the implementation of the incomplete beta function */
     public function cdf($k)
     {
         $accumulator = 0.0;
@@ -83,16 +83,17 @@ class Binomial extends Distribution implements DistributionInterface
         for ($i=0; $i<=$k; $i++) {
             $accumulator += $this->pdf($i);
         }
-        return $accumulator;
+        return max(0, min(1, $accumulator));
     }
 
-    /** Again, not a very efficient implementation */
+    /* Again, not a very efficient implementation */
     public function icdf($p)
     {
         if ($p < 0 || $p > 1) {
             throw new \InvalidArgumentException("Parameter (\$p = " . var_export($p, true) . " must be between 0 and 1. ");
         }
         if ($p == 1) {
+            // TODO: I believe there is a consistency issue here between the other distributions. Should this really return INF?
             return INF;
         }
         $accumulator = 0.0;

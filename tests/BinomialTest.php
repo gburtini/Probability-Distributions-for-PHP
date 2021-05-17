@@ -65,4 +65,13 @@ class BinomialTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(3, $d->icdf(0.956));
         $this->assertEquals(40, $d->icdf(0.9999999999999999));
     }
+
+    public function testRegressionCDFGreaterThanOne() {
+        // issue #38: https://github.com/gburtini/Probability-Distributions-for-PHP/issues/38
+        $bin1 = new Binomial(10,0.2);
+        $cdf1 = $bin1->cdf(10);
+        $xxDov = $bin1->icdf($cdf1);
+
+        $this->assertLessThanOrEqual($cdf1, 1);
+    }
 }
