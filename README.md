@@ -48,6 +48,26 @@ All supported distributions are in the namespace `gburtini\Distributions` and im
 Examples are provided in a comment at the top of most of the implementation files. In general, you should be able to use the parametrization listed above under "Supported Distributions" to create classes that implement the methods under "Interfaces".
 
 ```php
+// If you don't want to manually include all files then you can use this autolader from https://stackoverflow.com/a/6962046
+spl_autoload_register(
+    function($className)
+    {
+        $className = str_replace("_", "\\", $className);
+        $className = ltrim($className, '\\');
+        $fileName = '';
+        $namespace = '';
+        if ($lastNsPos = strripos($className, '\\'))
+        {
+            $namespace = substr($className, 0, $lastNsPos);
+            $className = substr($className, $lastNsPos + 1);
+            $fileName = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+        }
+        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+
+        require $fileName;
+    }
+);
+
 use gburtini\Distributions\Beta;
 $beta = new Beta(1, 100);
 $draw = $beta->rand();
