@@ -48,7 +48,8 @@ All supported distributions are in the namespace `gburtini\Distributions` and im
 Examples are provided in a comment at the top of most of the implementation files. In general, you should be able to use the parametrization listed above under "Supported Distributions" to create classes that implement the methods under "Interfaces".
 
 ```php
-// If you don't want to manually include all files then you can use this autolader from https://stackoverflow.com/a/6962046
+// If you don't want to manually include all files then you can use this autolader from
+// https://stackoverflow.com/a/6962046
 spl_autoload_register(
     function($className)
     {
